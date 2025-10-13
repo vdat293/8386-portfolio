@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to 8386 — My Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #1e1e2f;
+      --bg2: #4a4a78;
+      --text: #eaf2ff;
+      --muted: #aab7c8;
+      --ring: rgba(122, 184, 255, .45);
+      --frost: rgba(255, 255, 255, .08);
+      --stroke: rgba(255, 255, 255, .22);
+      --highlight: rgba(255, 255, 255, .35);
+      --btn-size: 70px;
+      /* desktop default */
+      --nav-offset: -90px;
+      /* desktop default: cách khung ~90px */
+      --carousel-h: 520px;
+      /* desktop default */
+      --avatar: 120px;
+      /* desktop default */
+      --card-pad: 32px 24px;
+      /* desktop default */
+      --gap: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow-x: hidden;
+      padding: 40px 0;
+      position: relative
+    }
+
+    /* ===== Intro (overlay đơn giản) ===== */
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    #intro h1 {
+      font-weight: 800;
+      letter-spacing: .5px;
+      font-size: clamp(28px, 4vw+12px, 56px);
+      line-height: 1.2;
+      color: var(--text);
+      /* gạch nháy (caret) */
+      border-right: 2px solid rgba(234, 242, 255, .9);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    /* Nhấp nháy caret khi gõ xong */
+    .caret-blink {
+      animation: caret .9s steps(1, end) infinite;
+    }
+
+    @keyframes caret {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    /* Fade out khi kết thúc intro */
+    .intro-fade-out {
+      transition: opacity .5s ease;
+      opacity: 0;
+    }
+
+    /* Trạng thái ẩn hiện app */
+    #app {
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+
+    #app.app-visible {
+      opacity: 1;
+    }
+
+    /* ===== Hero/Carousel gốc ===== */
+    .hero {
+      text-align: center;
+      margin: 0 16px 28px
+    }
+
+    .hero h1 {
+      font-weight: 800;
+      font-size: clamp(24px, 3vw+10px, 48px);
+      line-height: 1.2
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--gap);
+      padding: 0 16px
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      overflow: visible;
+      height: var(--carousel-h);
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .card {
+      position: absolute;
+      opacity: 0;
+      transform: translateX(40%) scale(.94);
+      background: linear-gradient(180deg, var(--frost), rgba(255, 255, 255, .03));
+      border: 1px solid var(--stroke);
+      border-radius: 22px;
+      padding: var(--card-pad);
+      text-align: center;
+      backdrop-filter: blur(16px) saturate(160%);
+      box-shadow: 0 20px 60px -30px var(--ring), inset 0 1px 0 var(--highlight);
+      width: min(92vw, 600px);
+      z-index: 2
+    }
+
+    .card.active {
+      opacity: 1;
+      transform: translateX(0) scale(1)
+    }
+
+    /* Animations */
+    .slide-in-right {
+      animation: inRight .45s ease both
+    }
+
+    .slide-out-left {
+      animation: outLeft .45s ease both
+    }
+
+    .slide-in-left {
+      animation: inLeft .45s ease both
+    }
+
+    .slide-out-right {
+      animation: outRight .45s ease both
+    }
+
+    @keyframes inRight {
+      from {
+        opacity: 0;
+        transform: translateX(40%) scale(.94)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1)
+      }
+    }
+
+    @keyframes outLeft {
+      from {
+        opacity: 1;
+        transform: translateX(0) scale(1)
+      }
+
+      to {
+        opacity: 0;
+        transform: translateX(-40%) scale(.94)
+      }
+    }
+
+    @keyframes inLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40%) scale(.94)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1)
+      }
+    }
+
+    @keyframes outRight {
+      from {
+        opacity: 1;
+        transform: translateX(0) scale(1)
+      }
+
+      to {
+        opacity: 0;
+        transform: translateX(40%) scale(.94)
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+
+      .slide-in-right,
+      .slide-out-left,
+      .slide-in-left,
+      .slide-out-right {
+        animation: none
+      }
+
+      .card {
+        transition: none
+      }
+
+      #intro h1 {
+        border-right: none
+      }
+
+      .caret-blink {
+        animation: none
+      }
+
+      .intro-fade-out {
+        transition: none
+      }
+
+      #app {
+        transition: none
+      }
+    }
+
+    .avatar img {
+      width: var(--avatar);
+      height: var(--avatar);
+      object-fit: cover;
+      border-radius: 20px;
+      border: 2px solid var(--stroke);
+      box-shadow: inset 0 1px 0 var(--highlight);
+      margin: 0 auto 16px;
+      display: block
+    }
+
+    .name {
+      font-weight: 700;
+      font-size: clamp(18px, 1.2vw+16px, 22px);
+      margin-bottom: 6px
+    }
+
+    .role {
+      font-size: clamp(13px, 1vw+10px, 15px);
+      color: var(--muted)
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 14px 0
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #bcd3ff;
+      border: 1px solid rgba(79, 156, 255, .35);
+      background: linear-gradient(180deg, rgba(79, 156, 255, .12), rgba(79, 156, 255, .05))
+    }
+
+    .actions {
+      margin-top: 12px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 9px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .04));
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: .25s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      text-decoration: none;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .btn:hover {
+      transform: translateY(-1px)
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 6px;
+      height: 2px;
+      background: rgba(122, 184, 255, .95);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease, opacity .25s ease;
+      opacity: 0;
+      border-radius: 2px
+    }
+
+    .btn:hover::after,
+    .btn:focus-visible::after {
+      transform: scaleX(1);
+      opacity: 1
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, .25);
+      border: none;
+      color: white;
+      font-size: clamp(24px, 2vw+18px, 42px);
+      width: var(--btn-size);
+      height: var(--btn-size);
+      border-radius: 50%;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: background .3s ease, box-shadow .3s ease;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, .3)
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, .45);
+      box-shadow: 0 0 25px rgba(122, 184, 255, .8), 0 0 45px rgba(122, 184, 255, .5)
+    }
+
+    #prev {
+      left: var(--nav-offset)
+    }
+
+    #next {
+      right: var(--nav-offset)
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 0 16px
+    }
+
+    /* ====== Breakpoints ====== */
+    @media (max-width:480px) {
+      :root {
+        --btn-size: 44px;
+        --nav-offset: 8px;
+        --carousel-h: 420px;
+        --avatar: 84px;
+        --card-pad: 20px 16px;
+        --gap: 10px;
+      }
+
+      .carousel {
+        max-width: 100%
+      }
+
+      #prev {
+        left: 8px
+      }
+
+      #next {
+        right: 8px
+      }
+    }
+
+    @media (min-width:481px) and (max-width:768px) {
+      :root {
+        --btn-size: 56px;
+        --nav-offset: -12px;
+        --carousel-h: 460px;
+        --avatar: 96px;
+        --card-pad: 24px 18px;
+      }
+    }
+
+    @media (min-width:769px) and (max-width:1199px) {
+      :root {
+        --btn-size: 60px;
+        --nav-offset: -70px;
+        --carousel-h: 480px;
+        --avatar: 110px;
+        --card-pad: 28px 22px;
+      }
+    }
+
+    /* Hiệu ứng nâng cao cho nút điều hướng */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      color: white;
+      font-size: clamp(24px, 2vw + 18px, 42px);
+      width: var(--btn-size);
+      height: var(--btn-size);
+      border-radius: 50%;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition:
+        background 0.3s ease,
+        box-shadow 0.4s ease,
+        transform 0.2s ease;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    /* Hiệu ứng hover: sáng và xoay nhẹ */
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow:
+        0 0 25px rgba(122, 184, 255, 0.9),
+        0 0 60px rgba(122, 184, 255, 0.4);
+      transform: translateY(-50%) scale(1.08) rotate(3deg);
+    }
+
+    /* Khi nhấn giữ (active) */
+    .nav-btn:active {
+      transform: translateY(-50%) scale(0.94);
+      box-shadow: 0 0 10px rgba(122, 184, 255, 0.6);
+    }
+
+    /* Hiệu ứng sóng sáng (ripple) khi click */
+    .nav-btn::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 20%, transparent 20%);
+      border-radius: 50%;
+      transform: scale(0);
+      opacity: 0.7;
+      pointer-events: none;
+      transition: transform 0.5s ease, opacity 0.6s ease;
+    }
+
+    .nav-btn:active::after {
+      width: 100%;
+      height: 100%;
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Intro overlay ===== -->
+  <div id="intro" aria-live="polite" aria-label="Intro: Chào mừng đến 8386">
+    <h1 id="introText"></h1>
+  </div>
+
+  <!-- ===== App content (ẩn cho tới khi intro xong) ===== -->
+  <div id="app" aria-hidden="true">
+    <section class="hero">
+      <h1>Welcome to 8386 — This is my team</h1>
+    </section>
+
+    <section class="carousel-wrapper">
+      <div class="carousel" aria-live="polite">
+        <button id="prev" class="nav-btn" aria-label="Slide trước">⟨</button>
+        <button id="next" class="nav-btn" aria-label="Slide sau">⟩</button>
+        <!-- Cards sẽ được render bằng JS -->
+      </div>
+      <button id="downloadAll" class="btn" style="margin-top:8px">Tải tất cả CV</button>
+    </section>
+
+    <footer>© 2025 8386 Team — Built with Glassmorphism Carousel</footer>
+  </div>
+
+  <script>
+    /* ========= Intro logic ========= */
+    (function () {
+      const introEl = document.getElementById('intro');
+      const textEl = document.getElementById('introText');
+      const appEl = document.getElementById('app');
+
+      const FULL_TEXT = 'Chào mừng đến 8386';
+      const TYPE_SPEED = 60;       // ms cho mỗi ký tự
+      const HOLD_AFTER_TYPE = 500; // ms giữ lại trước khi fade
+
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function revealApp() {
+        // Ẩn intro, hiện app
+        introEl.classList.add('intro-fade-out');
+        introEl.addEventListener('transitionend', () => {
+          introEl.style.display = 'none';
+        }, { once: true });
+
+        appEl.classList.add('app-visible');
+        appEl.setAttribute('aria-hidden', 'false');
+      }
+
+      function skipIntroNow() {
+        // Bỏ qua lập tức
+        textEl.textContent = FULL_TEXT;
+        revealApp();
+      }
+
+      function typeWriter(text, i = 0) {
+        if (i < text.length) {
+          textEl.textContent = text.slice(0, i + 1);
+          setTimeout(() => typeWriter(text, i + 1), TYPE_SPEED);
+        } else {
+          // Thêm nháy caret sau khi gõ xong
+          textEl.classList.add('caret-blink');
+          setTimeout(revealApp, HOLD_AFTER_TYPE);
+        }
+      }
+
+      // Bấm chuột, chạm, hoặc phím bất kỳ để skip
+      const skipEvents = ['click', 'touchstart', 'keydown'];
+      skipEvents.forEach(ev => {
+        introEl.addEventListener(ev, skipIntroNow, { once: true, passive: true });
+      });
+
+      // Khởi chạy
+      if (prefersReduced) {
+        // Giảm chuyển động: hiện nhanh rồi ẩn
+        textEl.textContent = FULL_TEXT;
+        setTimeout(revealApp, 250);
+      } else {
+        typeWriter(FULL_TEXT);
+      }
+    })();
+
+    /* ========= Carousel + actions gốc ========= */
+    // ====== Data ======
+    const members = [
+      { name: "Nguyễn Vũ Đạt", role: "Trưởng nhóm | MSSV: 24050126", photo: "./nguyen-dat/imgs/avatar.png", portfolio: "./nguyen-dat/index.html", cvUrl: "./cv/nguyen_phan_dinh_thai.pdf", skills: ["HTML", "CSS", "JS", "Bootstrap"] },
+      { name: "Danh Thị Hồng Hạnh", role: "Thành viên | MSSV: 24050126", photo: "https://i.imgur.com/WPvzsnm.jpg", portfolio: "./404-page/404page.html", cvUrl: "./cv/vo_an_nhien.pdf", skills: ["Figma", "Wireframe", "Prototype"] },
+      { name: "Lục Tấn Tài", role: "Thành viên | MSSV: 24050126", photo: "https://i.imgur.com/0Q8v6gT.jpg", portfolio: "./404-page/404page.html", cvUrl: "./cv/tran_gia_phuc.pdf", skills: ["Python", "FastAPI", "PostgreSQL"] },
+      { name: "Trịnh Nhật Hoàng", role: "Thành viên | MSSV: 24050126", photo: "https://i.imgur.com/4DGEpcW.jpg", portfolio: "./404-page/404page.html", cvUrl: "./cv/le_minh_thu.pdf", skills: ["Power BI", "DAX", "SQL"] },
+      { name: "Nguyễn Phan Đình Thái", role: "Thành viên | MSSV: 24050126", photo: "https://i.imgur.com/0MfCWQK.jpg", portfolio: "./404-page/404page.html", cvUrl: "./cv/nguyen_vu_dat.pdf", skills: ["Flutter", "Firebase", "UI"] }
+    ];
+
+    const carousel = document.querySelector('.carousel');
+    let current = 0;
+
+    function createCard(m) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.setAttribute('role', 'group');
+      card.setAttribute('aria-roledescription', 'slide');
+      card.innerHTML = `
+        <div class='avatar'><img src='${m.photo}' alt='Ảnh ${m.name}'></div>
+        <div class='name'>${m.name}</div>
+        <div class='role'>${m.role}</div>
+        <div class='tags'>${(m.skills || []).map(s => `<span class='chip'>${s}</span>`).join('')}</div>
+        <div class='actions'>
+          <a class='btn' href='${m.portfolioPath || m.portfolio || "#"}' target='_self' rel='noopener'>Mở Portfolio</a>
+          <button class='btn download-cv' data-url='${m.cvUrl || ""}' data-name='${m.name}'>Tải CV</button>
+        </div>`;
+      return card;
+    }
+
+    function renderMembers() {
+      members.forEach((m, i) => {
+        const card = createCard(m);
+        if (i === 0) card.classList.add('active');
+        carousel.appendChild(card);
+      });
+      updateAria();
+    }
+
+    function go(step) {
+      const cards = [...document.querySelectorAll('.card')];
+      if (!cards.length) return;
+      const prev = current; current = (current + step + members.length) % members.length;
+      const outgoing = cards[prev]; const incoming = cards[current];
+      outgoing.classList.remove('slide-in-right', 'slide-in-left', 'slide-out-right', 'slide-out-left');
+      incoming.classList.remove('slide-in-right', 'slide-in-left', 'slide-out-right', 'slide-out-left');
+      outgoing.classList.add(step > 0 ? 'slide-out-left' : 'slide-out-right');
+      incoming.classList.add('active', step > 0 ? 'slide-in-right' : 'slide-in-left');
+      incoming.addEventListener('animationend', () => {
+        outgoing.classList.remove('active');
+        updateAria();
+      }, { once: true });
+    }
+
+    function updateAria() {
+      const cards = [...document.querySelectorAll('.card')];
+      cards.forEach((c, i) => {
+        c.setAttribute('aria-label', `${i + 1} / ${cards.length}`);
+        c.inert = !c.classList.contains('active'); // chặn focus phần tử không active
+      });
+    }
+
+    function sanitizeFilename(name) {
+      return name.normalize('NFD').replace(/\p{Diacritic}/gu, '').replace(/\s+/g, '_');
+    }
+    function downloadCV(url, name) {
+      if (url && url.trim()) {
+        const a = document.createElement('a');
+        a.href = url; a.download = sanitizeFilename(name) + (url.endsWith('.pdf') ? '.pdf' : '');
+        document.body.appendChild(a); a.click(); a.remove();
+      } else {
+        const content = `CV của ${name}\n(Chưa gắn file PDF — hãy điền thuộc tính cvUrl trong mảng members)\n`;
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = sanitizeFilename(name) + "_CV.txt";
+        document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+      }
+    }
+
+    // Click nút tải CV
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.download-cv');
+      if (btn) { downloadCV(btn.dataset.url, btn.dataset.name); }
+    });
+
+    // Nút điều hướng
+    document.getElementById('next').addEventListener('click', () => go(1));
+    document.getElementById('prev').addEventListener('click', () => go(-1));
+    document.getElementById('downloadAll').addEventListener('click', () => members.forEach(m => downloadCV(m.cvUrl, m.name)));
+
+    // Phím mũi tên
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') go(1);
+      else if (e.key === 'ArrowLeft') go(-1);
+    });
+
+    // Vuốt (touch)
+    let startX = 0, touchActive = false;
+    carousel.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; touchActive = true }, { passive: true });
+    carousel.addEventListener('touchmove', () => { }, { passive: true });
+    carousel.addEventListener('touchend', (e) => {
+      if (!touchActive) return;
+      const dx = (e.changedTouches[0].clientX - startX);
+      if (Math.abs(dx) > 40) { dx < 0 ? go(1) : go(-1); }
+      touchActive = false;
+    });
+
+    // Khởi tạo members/cards ngay, phần app sẽ được hiển thị sau intro
+    renderMembers();
+  </script>
+</body>
+
+</html>
