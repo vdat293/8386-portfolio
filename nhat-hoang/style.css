@@ -1,0 +1,513 @@
+/* --- Cài đặt chung & Biến màu (Giao diện trắng hồng) --- */
+:root {
+    --primary-color: #4725dd;
+    /* Màu hồng đậm làm màu chủ đạo */
+    --secondary-color: #F4A8C8;
+    /* Màu hồng nhạt cho các chi tiết phụ */
+    --background-color: #FFF7FA;
+    /* Nền trắng có ánh hồng rất nhẹ */
+    --surface-color: #ffffff;
+    /* Nền trắng tinh cho các khối nội dung */
+    --text-color: #5B5B5B;
+    /* Màu chữ xám đậm, dễ đọc */
+    --heading-color: #333333;
+    /* Màu tiêu đề gần như đen */
+    --border-color: #FADAE8;
+    /* Màu viền hồng nhạt */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+section {
+    padding: 80px 10%;
+    scroll-margin-top: 90px;
+    /* Giữ lại để không bị header che */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--heading-color);
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Thanh Điều Hướng --- */
+header {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 15px 10%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Phần Mở Đầu --- */
+#intro {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.intro-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+}
+
+.intro-text h4 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.intro-text h1 {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.intro-text h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--heading-color);
+    margin-top: 15px;
+}
+
+.intro-text p {
+    margin: 25px 0 35px 0;
+    font-size: 1.1rem;
+}
+
+.intro-image img {
+    max-width: 400px;
+    border-radius: 50%;
+    border: 7px solid var(--primary-color);
+    box-shadow: 0 10px 40px rgba(213, 210, 219, 0.25);
+    --primary-color: #fd39e3;
+    /* Màu hồng đậm làm màu chủ đạo */
+}
+
+
+/* --- Phần Giới Thiệu (About Me) --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.about-carousel {
+    position: relative;
+    flex: 1;
+    max-width: 460px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.carousel-window {
+    width: 100%;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px rgba(71, 37, 221, 0.12);
+    background-color: var(--surface-color);
+    aspect-ratio: 3 / 4;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(71, 37, 221, 0.08), rgba(244, 168, 200, 0.08));
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: var(--primary-color);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.carousel-btn:hover,
+.carousel-btn:focus-visible {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-50%) scale(1.05);
+    outline: none;
+}
+
+.carousel-btn.prev {
+    left: 16px;
+}
+
+.carousel-btn.next {
+    right: 16px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--border-color);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.carousel-dot:hover,
+.carousel-dot:focus-visible {
+    transform: scale(1.15);
+    outline: none;
+    background-color: rgba(71, 37, 221, 0.6);
+}
+
+.carousel-dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track,
+    .carousel-btn,
+    .carousel-dot {
+        transition: none !important;
+    }
+
+    .carousel-btn:hover,
+    .carousel-btn:focus-visible,
+    .carousel-dot:hover,
+    .carousel-dot:focus-visible {
+        transform: none;
+    }
+}
+
+.about-text {
+    flex: 1;
+    background-color: var(--surface-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.about-text ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.about-text ul li {
+    margin-bottom: 10px;
+}
+
+/* --- Phần Kỹ Năng (My Skills) --- */
+#skills {
+    background-color: #FDECF2;
+    /* Nền hồng rất nhạt cho phần skills */
+}
+
+.skills-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.skill-category {
+    background-color: var(--surface-color);
+    padding: 30px;
+    border-radius: 10px;
+    flex: 1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.skill-item {
+    background-color: #f0f0f0;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.skill-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.skill-item i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+    color: var(--secondary-color);
+    transition: color 0.3s;
+}
+
+.skill-item:hover i {
+    color: white;
+}
+
+/* --- Phần Liên Hệ (Contact) --- */
+/* --- Phần Liên Hệ (Contact) --- */
+#contact {
+    background-color: var(--background-color);
+    /* Đồng bộ màu nền */
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    /* Xếp các dòng theo chiều dọc */
+    align-items: center;
+    /* Căn giữa theo chiều ngang */
+    gap: 30px;
+    /* Khoảng cách giữa dòng thông tin và dòng icon */
+    margin-top: 40px;
+}
+
+/* Dòng chứa email và SĐT */
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép xuống dòng trên màn hình nhỏ */
+    justify-content: center;
+    gap: 40px;
+}
+
+/* Dòng chứa các icon MXH */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+/* Tùy chỉnh chung cho các mục liên hệ */
+.contact-item {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    background-color: transparent !important;
+    /* Xóa nền */
+    box-shadow: none !important;
+    /* Xóa viền/bóng */
+    padding: 0 !important;
+    /* Xóa padding */
+    transition: color 0.3s, transform 0.3s;
+}
+
+.contact-item:hover {
+    color: var(--primary-color);
+    /* Đổi màu khi di chuột */
+    transform: translateY(-3px);
+    /* Hiệu ứng nhấc lên */
+}
+
+/* Tùy chỉnh icon trong dòng email và SĐT */
+.contact-info .contact-item i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+/* Tùy chỉnh icon trong dòng MXH */
+.social-links .contact-item i {
+    font-size: 2.5rem;
+    /* Làm icon to hơn */
+    color: var(--heading-color);
+    /* Màu đen nhạt */
+}
+
+.social-links .contact-item:hover i {
+    color: var(--primary-color);
+    /* Đổi màu khi di chuột */
+}
+
+/* --- Chân Trang (Footer) --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #FDECF2;
+    color: #666;
+}
+
+/* --- Responsive cho màn hình nhỏ --- */
+@media (max-width: 768px) {
+    section {
+        padding: 60px 5%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .intro-content,
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intro-image {
+        margin-top: 30px;
+    }
+
+    .intro-image img {
+        max-width: 250px;
+    }
+
+    .about-container {
+        flex-direction: column-reverse;
+    }
+
+    .about-carousel {
+        max-width: 340px;
+        gap: 14px;
+    }
+
+    .carousel-window {
+        aspect-ratio: 1 / 1;
+    }
+
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .skills-container {
+        flex-direction: column;
+    }
+}
+
+/* --- Phần Download CV --- */
+#cv-download {
+    padding: 50px 10%;
+    text-align: center;
+    background-color: var(--background-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-cv {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cv:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(204, 67, 223, 0.3);
+    /* Dùng màu --primary-color để tạo bóng */
+}
+
+.btn-cv i {
+    margin-right: 10px;
+}
