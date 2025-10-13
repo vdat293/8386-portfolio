@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Hồng Hạnh</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: #444;
+            min-height: 100vh;
+            background-image: url(image.png);
+            background-size: cover;
+            background-position: center;
+            border-radius: 25px;
+            padding: 50px;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav span {
+            margin: 0 15px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav span:hover {
+            color: #1a0e11;
+            transform: scale(1.1);
+        }
+
+        section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #9c5858;
+            text-shadow: 0 0 10px rgba(167, 121, 128, 0.7);
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .skills {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px 30px;
+            border-radius: 15px;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: #ffebf0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Portfolio Hồng Hạnh</h1>
+        <p>Đậm cá tính • Sáng tạo • Cảm xúc</p>
+    </header>
+
+    <nav>
+        <span>About</span>
+        <span>Education</span>
+        <span>Experience</span>
+        <span>Skills</span>
+        <span>Contact</span>
+    </nav>
+
+    <section id="about">
+        <h2>Giới thiệu</h2>
+        <p>
+            Xin chào, mình là <b>Hồng Hạnh</b> — một sinh viên thiết kế đồ họa với niềm đam mê sáng tạo và yêu thích
+            nghệ thuật.
+            Mình luôn tìm kiếm cách thể hiện cảm xúc qua màu sắc, bố cục và phong cách thiết kế mang dấu ấn riêng.
+        </p>
+    </section>
+
+    <section id="education">
+        <h2>Học vấn</h2>
+        <p>
+            🎓 Sinh viên ngành Công nghệ Thông tin – chuyên ngành Thiết kế Đồ họa.<br>
+            📍 Trường: Đại học tại Bình Dương<br>
+            💡 Mục tiêu: Trở thành nhà thiết kế 2D/3D chuyên nghiệp, tạo nên trải nghiệm đẹp và dễ dùng cho người dùng.
+        </p>
+    </section>
+
+    <section id="experience">
+        <h2>Kinh nghiệm</h2>
+        <p>
+            💼 Đã tham gia các dự án thiết kế giao diện web/app nhỏ trong quá trình học.<br>
+            🧠 Có kinh nghiệm sử dụng Figma, Photoshop và Illustrator.<br>
+            ✨ Tập trung vào phong cách hiện đại, tinh tế và cảm xúc.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2>Kỹ năng</h2>
+        <div class="skills">
+            <div class="skill">🎨 Photoshop</div>
+            <div class="skill">🖌 Illustrator</div>
+            <div class="skill">💻 Figma</div>
+            <div class="skill">🌈 2D/3D Design</div>
+            <div class="skill">🧩 HTML & CSS</div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Liên hệ</h2>
+        <p>
+            📧 Email: <a href="mailto:24050127@student.bdu.edu.vn"
+                style="color:#5a4f8a;">24050127@student.bdu.edu.vn</a><br>
+            📱 SĐT: 0783162031<br>
+            💬 Kết nối: <a href="#" style="color:#5a4f8a;">Facebook | Behance | Instagram</a>
+        </p>
+    </section>
+
+    <footer>
+        © 2025 Hồng Hạnh | Thiết kế với 💗 và sự sáng tạo
+    </footer>
+</body>
+
+</html>
