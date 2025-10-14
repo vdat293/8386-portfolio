@@ -72,6 +72,24 @@
             transform: scale(1.1);
         }
 
+        .download-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #f7a1b5, #b37cd5);
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 8px 18px rgba(193, 128, 168, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(169, 110, 154, 0.45);
+        }
+
         section {
             max-width: 900px;
             margin: 50px auto;
@@ -138,6 +156,7 @@
     <header>
         <h1>Portfolio Hồng Hạnh</h1>
         <p>Đậm cá tính • Sáng tạo • Cảm xúc</p>
+        <a class="download-btn" href="assets/cv.pdf" download>Tải CV</a>
     </header>
 
     <nav>
