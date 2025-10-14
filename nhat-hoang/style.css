@@ -171,7 +171,7 @@ nav {
 }
 
 .carousel-window {
-    width: 100%;
+    width: 80%;
     position: relative;
     border-radius: 16px;
     overflow: hidden;
@@ -263,6 +263,7 @@ nav {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .carousel-track,
     .carousel-btn,
     .carousel-dot {
