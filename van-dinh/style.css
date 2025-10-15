@@ -1,0 +1,559 @@
+/* --- Cài đặt chung --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Thanh điều hướng (Header & Nav) --- */
+header {
+    background-color: #fff;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 2.0rem;
+    font-weight: 700;
+    color: #007bff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #007bff;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.btn-cv {
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.25rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-cv:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* --- Phần Hero --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 10%;
+    min-height: 80vh;
+}
+
+.hero-text {
+     max-width: 600px; 
+    }
+.hero-image {
+     max-width: 400px; 
+    }
+.hero-image img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.intro-text {
+    font-size: 1.3rem;
+    color: #555;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.1s forwards;
+}
+
+.name-text {
+    font-size: 3.5rem;
+    color: #007bff;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .10em solid blue;
+    animation: 
+        typing 3.5s steps(30, end) forwards,
+        blinking-cursor .75s step-end infinite;
+}
+
+.desc-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 3.6s forwards;
+}
+
+.welcome-text {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #777;
+    opacity: 0;
+    animation: fadeIn 1s ease 4.6s forwards;
+}
+
+/* --- Tiêu đề dùng chung --- */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+    position: relative;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: #007bff;
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+/* --- Phần About Me --- */
+.about-section {
+    padding: 5rem 10%;
+    background-color: #fff;
+}
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+}
+.about-images-slideshow {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+    aspect-ratio: 1 / 1.2;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.about-images-slideshow img {
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 15px;
+    position: absolute; top: 0; left: 0;
+    opacity: 0;
+    animation: imageFadeLoop 20s ease-in-out infinite;
+}
+.about-images-slideshow img:nth-child(2) {
+    animation-delay: 5s; 
+}
+.about-images-slideshow img:nth-child(3) {
+    animation-delay: 10s; 
+}
+.about-images-slideshow img:nth-child(4) {
+    animation-delay: 15s; 
+}
+
+.about-content {
+    flex: 1; max-width: 500px;
+}
+.info-group {
+    margin-bottom: 2rem;
+}
+.info-group h3 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+.info-group p, .info-group ul li {
+    font-size: 1.25rem; color: #555;
+}
+.info-group i {
+    color: #007bff;
+}
+.hobbies-list {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+.hobbies-list li { 
+    display: flex; align-items: center; gap: 0.7rem;
+}
+.social-links {
+    display: flex; gap: 1.5rem;
+}
+.social-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-links a:hover {
+    color: #007bff;
+    transform: scale(1.2);
+}
+
+
+/* --- PHẦN SKILLS --- */
+.skills-section {
+    padding: 5rem 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+.skills-section::before,
+.skills-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 2;
+    pointer-events: none;
+}
+.skills-section::before {
+    left: 0;
+    background: linear-gradient(to right, #fff, transparent);
+}
+.skills-section::after {
+    right: 0;
+    background: linear-gradient(to left, #fff, transparent);
+}
+
+.skills-marquee {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.skills-marquee:hover .skills-band {
+    animation-play-state: paused ;
+}
+
+.skills-band {
+    display: flex;
+    flex-shrink: 0;
+    gap: 2rem;
+    align-items: center;
+    animation: scroll 20s linear infinite;
+}
+.band-reverse {
+    animation-direction: reverse;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: #f4f7f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    white-space: nowrap;
+    font-weight: 600;
+}
+.skill-item i {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+/* --- Phần Projects --- */
+.projects-section {
+    padding: 5rem 10%;
+    background-color: #f4f7f9;
+}
+.projects-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+}
+.project-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+.project-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.project-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.project-title {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 0.8rem;
+}
+.project-description {
+    font-size: 1.25rem;
+    color: #555;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+.project-btn {
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+.project-btn:hover {
+    background-color: #0056b3;
+}
+
+/* --- Phần Contact --- */
+.contact-section {
+    padding: 5rem 10%;
+    text-align: center;
+    background-color: #f4f7f9;
+}
+.contact-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem; flex-wrap: wrap;
+}
+.contact-item {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: color 0.3s ease;
+}
+.contact-item:hover {
+    color: #007bff;
+}
+.contact-item i {
+    font-size: 1.5rem;
+}
+.contact-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.contact-social-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 2.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.contact-social-links a:hover {
+    color: #007bff;
+    transform: translateY(-5px); }
+
+/* --- Phần Footer --- */
+footer {
+    background-color: #333;
+    color: #f4f7f9;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+/* --- Keyframes --- */
+@keyframes scroll {
+    from { 
+        transform: translateX(0); 
+    }
+    to { 
+        transform: translateX(-50%); 
+    }
+}
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width:100%
+    }
+}
+
+
+
+@keyframes blinking-cursor { 
+    from, to { 
+        border-color: transparent; 
+    } 
+    50% { border-color: blue; 
+    }
+ }
+@keyframes fadeIn { 
+    from {
+        opacity: 0; transform: translateY(20px);
+    } to {
+        opacity: 1; transform: translateY(0); 
+    } 
+}
+@keyframes imageFadeLoop {
+    0% { opacity: 0; 
+    } 
+    5% { opacity: 1; 
+    } 
+    20% { opacity: 1; 
+    }
+    25% { opacity: 0; 
+    } 
+    100% { opacity: 0; 
+    }
+}
+
+/* --- Responsive  --- */
+
+/* ---  Tablet (Dưới 768px) --- */
+@media (max-width: 768px) {
+    nav .logo {
+        font-size: 1rem;
+    }
+    nav ul li a {
+        font-size: 1rem;
+    }
+    nav .btn-cv {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+    nav {
+        height: 20px;
+    }
+    .projects-section{
+        padding: 4rem 5%;
+    }
+
+    .name-text { 
+        font-size: 2.8rem; 
+    }
+    .desc-text { 
+        font-size: 1.3rem; 
+    }
+    .section-title { 
+        font-size: 2.2rem; 
+    }
+
+    .skills-section::before,
+    .skills-section::after {
+        width: 100px;
+    }
+    .project-title {
+        white-space: nowrap;
+        font-size: 1.3rem;
+    }
+    .project-description {
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+
+}
+
+/* ---Mobile L (Dưới 425px) --- */
+@media (max-width:425px ) {
+    .section-title {
+        font-size: 25px;
+    }
+
+
+    nav .logo {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero { gap: 3rem; }
+    
+    .hero-image { order: -1; max-width: 300px; }
+    
+    .about-images-slideshow {
+        display: none;
+    }
+    .skills-band {
+        animation-duration: 20s;
+    }
+    .skills-marquee{
+        display: grid;
+    }
+    .skill-itemm {
+        height: 10px;
+        font-size: 12px;
+    }
+    .skill-item i {
+        font-size: 1.5rem;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}
