@@ -120,6 +120,34 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { threshold: 0.5 });
   sections.forEach(sec => navObserver.observe(sec));
 
+  const backToTopButton = document.querySelector(".back-to-top");
+  if (backToTopButton) {
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const heroSection = document.getElementById("home");
+    const setVisibility = (show) => {
+      backToTopButton.classList.toggle("is-visible", show);
+    };
+
+    if ("IntersectionObserver" in window && heroSection) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          setVisibility(!entry.isIntersecting);
+        });
+      }, { threshold: 0.6 });
+      heroObserver.observe(heroSection);
+    } else {
+      const handleScroll = () => {
+        setVisibility(window.scrollY > window.innerHeight * 0.6);
+      };
+
+      handleScroll();
+      window.addEventListener("scroll", handleScroll);
+    }
+  }
+
   // About section profile switching
   const photoEl = document.getElementById("profile-photo");
   const dobEl = document.getElementById("dob");
@@ -209,6 +237,76 @@ document.addEventListener("DOMContentLoaded", function () {
     renderProfile("dat", { immediate: true });
   }
 
-  // Hobby image fade carousel
-  // Hobby image fade carousel (removed)
+  const hobbyCarouselImages = document.querySelectorAll(".hobby-carousel-image");
+
+  if (hobbyCarouselImages.length) {
+    const images = Array.from(hobbyCarouselImages);
+    let activeIndex = 0;
+    const CAROUSEL_DELAY = 4500;
+
+    images.forEach((img, index) => {
+      img.classList.toggle("is-active", index === activeIndex);
+    });
+
+    if (images.length > 1) {
+      let timerId = null;
+
+      const showNextImage = () => {
+        const nextIndex = (activeIndex + 1) % images.length;
+        const currentImage = images[activeIndex];
+        const nextImage = images[nextIndex];
+
+        currentImage.classList.remove("is-active");
+
+        const revealNext = () => {
+          requestAnimationFrame(() => {
+            nextImage.classList.add("is-active");
+          });
+        };
+
+        if (nextImage.complete && nextImage.naturalWidth !== 0) {
+          revealNext();
+        } else {
+          nextImage.addEventListener("load", function handleLoad() {
+            nextImage.removeEventListener("load", handleLoad);
+            revealNext();
+          });
+        }
+
+        activeIndex = nextIndex;
+      };
+
+      const stopCarousel = () => {
+        if (timerId !== null) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+      };
+
+      const startCarousel = () => {
+        stopCarousel();
+        timerId = setInterval(showNextImage, CAROUSEL_DELAY);
+      };
+
+      const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      if (!motionQuery.matches) {
+        startCarousel();
+      }
+
+      const handleMotionChange = (event) => {
+        if (event.matches) {
+          stopCarousel();
+        } else {
+          startCarousel();
+        }
+      };
+
+      if (typeof motionQuery.addEventListener === "function") {
+        motionQuery.addEventListener("change", handleMotionChange);
+      } else if (typeof motionQuery.addListener === "function") {
+        motionQuery.addListener(handleMotionChange);
+      }
+    }
+  }
 });
