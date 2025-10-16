@@ -119,4 +119,96 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, { threshold: 0.5 });
   sections.forEach(sec => navObserver.observe(sec));
+
+  // About section profile switching
+  const photoEl = document.getElementById("profile-photo");
+  const dobEl = document.getElementById("dob");
+  const hometownEl = document.getElementById("hometown");
+  const bioEl = document.getElementById("bio");
+  const skillsEl = document.getElementById("skills");
+  const aboutDetails = document.getElementById("about-details");
+  const profileLinks = document.querySelectorAll(".name-link");
+
+  if (photoEl && dobEl && hometownEl && bioEl && skillsEl && aboutDetails && profileLinks.length) {
+    const profiles = {
+      dat: {
+        photo: "imgs/img_about.png",
+        alt: "Ảnh chân dung — Nguyễn Vũ Đạt",
+        dob: "02/09/2003",
+        hometown: "Thái Bình",
+        bio: "Sinh viên K27 ngành Công nghệ Thông tin tại Trường Đại học Bình Dương. Ít nói, hiếu học, đôi khi hơi lười ˙𐃷˙. Thích e-Sport và tập trung xây dựng trải nghiệm web đẹp mắt.",
+        skills: ["HTML", "CSS", "JavaScript", "React", "Node.js", "Tailwind CSS", "Figma"]
+      },
+      nor: {
+        photo: "imgs/nor.jpg",
+        alt: "Ảnh chân dung — Nor",
+        dob: "—",
+        hometown: "Sống tại Bình Dương",
+        bio: "Nor là phiên bản thích thử nghiệm UI/UX, chuyển động mượt và micro-interaction. Đang học thêm Vue, GSAP và tối ưu hiệu năng cho các dự án cá nhân.",
+        skills: ["HTML", "CSS", "JavaScript", "Vue", "GSAP", "Vite", "Figma"]
+      }
+    };
+
+    const renderProfile = (key, { immediate = false } = {}) => {
+      const profile = profiles[key];
+      if (!profile) return;
+
+      profileLinks.forEach(link => {
+        link.classList.toggle("active", link.dataset.profile === key);
+      });
+
+      const applyTextContent = () => {
+        dobEl.textContent = profile.dob;
+        hometownEl.textContent = profile.hometown;
+        bioEl.textContent = profile.bio;
+        skillsEl.innerHTML = profile.skills.map(skill => `<li>${skill}</li>`).join("");
+      };
+
+      if (immediate) {
+        photoEl.src = profile.photo;
+        photoEl.alt = profile.alt;
+        applyTextContent();
+        aboutDetails.classList.remove("hide");
+        photoEl.style.opacity = 1;
+        return;
+      }
+
+      aboutDetails.classList.add("hide");
+      photoEl.style.opacity = 0;
+
+      setTimeout(() => {
+        const handleImageLoad = () => {
+          photoEl.onload = null;
+          requestAnimationFrame(() => {
+            photoEl.style.opacity = 1;
+          });
+        };
+
+        photoEl.onload = handleImageLoad;
+        photoEl.src = profile.photo;
+        photoEl.alt = profile.alt;
+        if (photoEl.complete) {
+          handleImageLoad();
+        }
+
+        applyTextContent();
+        aboutDetails.classList.remove("hide");
+      }, 200);
+    };
+
+    profileLinks.forEach(link => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const profileKey = link.dataset.profile;
+        if (profileKey) {
+          renderProfile(profileKey);
+        }
+      });
+    });
+
+    renderProfile("dat", { immediate: true });
+  }
+
+  // Hobby image fade carousel
+  // Hobby image fade carousel (removed)
 });
