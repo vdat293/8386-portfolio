@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
         skills: ["HTML", "CSS", "JavaScript", "React", "Node.js", "Tailwind CSS", "Figma"]
       },
       nor: {
-        photo: "imgs/nor.jpg",
+        photo: "imgs/maika.jpg",
         alt: "Ảnh chân dung — Nor",
         dob: "—",
         hometown: "Sống tại Bình Dương",
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (hobbyCarouselImages.length) {
     const images = Array.from(hobbyCarouselImages);
     let activeIndex = 0;
-    const CAROUSEL_DELAY = 4500;
+    const CAROUSEL_DELAY = 3000;
 
     images.forEach((img, index) => {
       img.classList.toggle("is-active", index === activeIndex);
