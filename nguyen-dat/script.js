@@ -4,19 +4,43 @@ document.addEventListener("DOMContentLoaded", function () {
   const siteNav = document.querySelector(".site-nav");
   const navList = document.getElementById("primary-navigation");
   const navLinks = document.querySelectorAll(".nav-link");
+  const personaSelect = document.querySelector(".persona-select");
+  const heroImageEl = document.querySelector(".hero-image img");
+  const skillsNavLink = document.querySelector('.nav-link[href="#skills"]');
+  const skillsHeading = document.querySelector(".skills-heading");
+  const achievementsHeading = document.querySelector(".achievements-heading");
+  const skillsProgressList = document.querySelector(".skills-section .skills-list");
+  const achievementGrid = document.querySelector(".skills-section .achievement-grid");
+
+  const PERSONA_TEXTS = {
+    dat: ["Nguyễn Vũ Đạt", "Sinh viên CNTT"],
+    nor: ["Nor", "Cậu bé mộng mơ"]
+  };
+  const PERSONA_IMAGES = {
+    dat: {
+      src: "imgs/avatar.png",
+      alt: "Ảnh đại diện — Nguyễn Vũ Đạt"
+    },
+    nor: {
+      src: "imgs/nor.jpg",
+      alt: "Ảnh đại diện — Nor"
+    }
+  };
+
+  let updateTypeTexts = null;
 
   if (nameSpan) {
-    const texts = ["Nguyễn Vũ Đạt", "Sinh viên CNTT"];
     const TYPE_SPEED = 100;
     const ERASE_SPEED = 60;
     const HOLD_TIME = 1000;
 
+    let texts = PERSONA_TEXTS.dat.slice();
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
 
     const typeEffect = () => {
-      const currentText = texts[textIndex];
+      const currentText = texts[textIndex] || "";
       nameSpan.textContent = currentText.substring(0, charIndex);
 
       let delay = isDeleting ? ERASE_SPEED : TYPE_SPEED;
@@ -38,6 +62,17 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(typeEffect, delay);
     };
 
+    updateTypeTexts = (nextTexts = []) => {
+      if (!Array.isArray(nextTexts) || nextTexts.length === 0) {
+        return;
+      }
+      texts = nextTexts.slice();
+      textIndex = 0;
+      charIndex = 0;
+      isDeleting = false;
+      nameSpan.textContent = "";
+    };
+
     typeEffect();
   }
 
@@ -50,6 +85,16 @@ document.addEventListener("DOMContentLoaded", function () {
       navToggle.setAttribute("aria-expanded", "false");
     }
     document.body.classList.remove("no-scroll");
+  };
+
+  const setHeroImage = (personaKey) => {
+    if (!heroImageEl) return;
+    const config = PERSONA_IMAGES[personaKey];
+    if (!config) return;
+    if (heroImageEl.getAttribute("src") !== config.src) {
+      heroImageEl.src = config.src;
+    }
+    heroImageEl.alt = config.alt;
   };
 
   if (navToggle && siteNav && navList) {
@@ -149,6 +194,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // About section profile switching
+  let setActiveProfile = null;
+
   const photoEl = document.getElementById("profile-photo");
   const dobEl = document.getElementById("dob");
   const hometownEl = document.getElementById("hometown");
@@ -177,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
-    const renderProfile = (key, { immediate = false } = {}) => {
+    setActiveProfile = (key, { immediate = false } = {}) => {
       const profile = profiles[key];
       if (!profile) return;
 
@@ -229,12 +276,12 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         const profileKey = link.dataset.profile;
         if (profileKey) {
-          renderProfile(profileKey);
+          setActiveProfile(profileKey);
         }
       });
     });
 
-    renderProfile("dat", { immediate: true });
+    setActiveProfile("dat", { immediate: true });
   }
 
   const hobbyCarouselImages = document.querySelectorAll(".hobby-carousel-image");
@@ -308,5 +355,175 @@ document.addEventListener("DOMContentLoaded", function () {
         motionQuery.addListener(handleMotionChange);
       }
     }
+  }
+
+  const promptEl = document.getElementById("persona-prompt");
+  const sentinel = document.getElementById("mode-sentinel");
+  const PROMPT_MESSAGE = {
+    dat: "Bạn có muốn xem một cá tính khác chứ ?",
+    nor: "Bạn muốn về lại nhân cách cũ chứ ?"
+  };
+
+  const setSkillsMode = (mode = "skills") => {
+    const showingAchievements = mode === "achievements";
+    if (skillsNavLink) {
+      skillsNavLink.textContent = showingAchievements ? "Achievement" : "Kỹ năng";
+    }
+    if (skillsHeading) {
+      skillsHeading.setAttribute("aria-hidden", String(showingAchievements));
+    }
+    if (achievementsHeading) {
+      achievementsHeading.setAttribute("aria-hidden", String(!showingAchievements));
+    }
+    if (skillsProgressList) {
+      skillsProgressList.setAttribute("aria-hidden", String(showingAchievements));
+    }
+    if (achievementGrid) {
+      achievementGrid.setAttribute("aria-hidden", String(!showingAchievements));
+    }
+  };
+
+  let persona = "dat";
+  let hasUnlockedPersonaSelect = false;
+  let promptHasFired = false;
+  let promptObserver = null;
+  let fallbackScrollHandler = null;
+
+  const setPromptVisibility = (visible) => {
+    if (!promptEl) return;
+    if (promptHasFired && visible) return;
+    promptEl.classList.toggle("show", visible);
+    promptEl.setAttribute("aria-hidden", String(!visible));
+  };
+
+  const updatePromptCopy = () => {
+    if (!promptEl) return;
+    const message = PROMPT_MESSAGE[persona] || PROMPT_MESSAGE.dat;
+    promptEl.textContent = message;
+    promptEl.setAttribute("aria-label", message);
+  };
+
+  const syncPersonaSelect = () => {
+    if (!personaSelect) return;
+    personaSelect.value = persona;
+  };
+
+  const unlockPersonaSelect = () => {
+    if (!personaSelect || hasUnlockedPersonaSelect) return;
+    hasUnlockedPersonaSelect = true;
+    personaSelect.hidden = false;
+    personaSelect.removeAttribute("hidden");
+    personaSelect.disabled = false;
+    personaSelect.removeAttribute("disabled");
+    personaSelect.classList.add("is-visible");
+    syncPersonaSelect();
+  };
+
+  const applyPersona = (nextPersona, { scrollToTop = true, force = false } = {}) => {
+    if (!PERSONA_TEXTS[nextPersona]) return;
+    if (!force && persona === nextPersona) {
+      syncPersonaSelect();
+      return;
+    }
+
+    persona = nextPersona;
+    document.body.classList.toggle("dark", persona === "nor");
+    if (updateTypeTexts) updateTypeTexts(PERSONA_TEXTS[persona]);
+    if (setActiveProfile) setActiveProfile(persona, { immediate: true });
+    setHeroImage(persona);
+    updatePromptCopy();
+    syncPersonaSelect();
+    setSkillsMode(persona === "nor" ? "achievements" : "skills");
+
+    if (scrollToTop) {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+  };
+
+  applyPersona("dat", { scrollToTop: false, force: true });
+  setSkillsMode("skills");
+
+  if (personaSelect) {
+    personaSelect.addEventListener("change", () => {
+      const selectedPersona = personaSelect.value === "nor" ? "nor" : "dat";
+      if (!hasUnlockedPersonaSelect) {
+        syncPersonaSelect();
+        return;
+      }
+      closeNav();
+      setPromptVisibility(false);
+      applyPersona(selectedPersona, { scrollToTop: false });
+    });
+  }
+
+  if (promptEl && sentinel) {
+    setPromptVisibility(false);
+
+    const observerOptions = { threshold: 0.75 };
+
+    const disablePrompt = () => {
+      setPromptVisibility(false);
+      if (promptObserver) {
+        promptObserver.disconnect();
+        promptObserver = null;
+      }
+      if (fallbackScrollHandler) {
+        window.removeEventListener("scroll", fallbackScrollHandler);
+        fallbackScrollHandler = null;
+      }
+      promptEl.classList.remove("show");
+      promptEl.hidden = true;
+      promptEl.setAttribute("aria-hidden", "true");
+      promptEl.setAttribute("tabindex", "-1");
+    };
+
+    if ("IntersectionObserver" in window) {
+      promptObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!promptHasFired) {
+            setPromptVisibility(entry.isIntersecting);
+          }
+        });
+      }, observerOptions);
+      promptObserver.observe(sentinel);
+    } else {
+      fallbackScrollHandler = () => {
+        if (promptHasFired) {
+          window.removeEventListener("scroll", fallbackScrollHandler);
+          fallbackScrollHandler = null;
+          return;
+        }
+        const rect = sentinel.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom >= 0;
+        setPromptVisibility(inView);
+      };
+      window.addEventListener("scroll", fallbackScrollHandler, { passive: true });
+      fallbackScrollHandler();
+    }
+
+    const handlePromptActivation = (event) => {
+      if (promptHasFired) return;
+      if (event) {
+        event.preventDefault();
+      }
+      promptHasFired = true;
+      disablePrompt();
+      unlockPersonaSelect();
+      applyPersona("nor", { scrollToTop: true });
+      promptEl.removeEventListener("click", handlePromptActivation);
+      promptEl.removeEventListener("keydown", handlePromptKeydown);
+    };
+
+    const handlePromptKeydown = (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        handlePromptActivation(event);
+      }
+    };
+
+    promptEl.addEventListener("click", handlePromptActivation);
+    promptEl.addEventListener("keydown", handlePromptKeydown);
   }
 });

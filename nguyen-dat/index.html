@@ -41,6 +41,10 @@
                     <li><a href="#social" class="nav-link">MXH</a></li>
                     <li><a href="#contact" class="nav-link">Liên hệ</a></li>
                 </ul>
+                <select class="persona-select" hidden disabled aria-label="Chọn cá tính">
+                    <option value="dat" selected>Đạt</option>
+                    <option value="nor">Nor</option>
+                </select>
             </nav>
         </div>
     </header>
@@ -48,7 +52,7 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero-section scroll-animate">
-            <div class="container hero-container">
+            <div class=" hero-container">
                 <div class="hero-text">
                     <h2>Xin chào, tôi là</h2>
                     <h1><span id="typed-name" class="highlight"></span><span class="caret">▋</span></h1>
@@ -61,7 +65,6 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <!-- Portrait photo saved from Unsplash -->
                     <img src="imgs/avatar.png" alt="Ảnh đại diện" />
                 </div>
             </div>
@@ -151,7 +154,8 @@
         <!-- Skills Section -->
         <section id="skills" class="skills-section scroll-animate">
             <div class="container">
-                <h2>Programming Language Skills</h2>
+                <h2 class="skills-heading">Programming Language Skills</h2>
+                <h2 class="achievements-heading">Achievements</h2>
                 <div class="skills-list">
                     <div class="skill-item">
                         <div class="skill-info">
@@ -187,6 +191,27 @@
                         </div>
                         <div class="skill-track">
                             <span class="skill-fill" style="--progress: 50%; --skill-color: #ef4444;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="achievement-grid">
+                    <div class="achievement-card" tabindex="0">
+                        <div class="achievement-image">
+                            <img src="imgs/vangnak.jpg" alt="Ảnh thành tựu Vangnak" />
+                        </div>
+                        <div class="achievement-content">
+                            <h3>Top 1 Nakroth <br>sever Việt Nam</h3>
+                            <p>Vàng Nakroth tựa game Liên Quân Mobile</p>
+                        </div>
+                    </div>
+                    <div class="achievement-card" tabindex="0">
+                        <div class="achievement-image">
+                            <img src="imgs/thachdau.jpg" alt="Ảnh thành tựu Thách Đấu" />
+                        </div>
+                        <div class="achievement-content">
+                            <h3>Top 1 thách đấu <br> liên quân</h3>
+                            <p>Đã từng đạt rất nhiều lần top 1 thách đấu ở sever Liên Quân Việt Nam
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -341,6 +366,12 @@
             </div>
         </section>
     </main>
+
+    <div id="mode-sentinel" class="mode-sentinel" aria-hidden="true"></div>
+
+    <div id="persona-prompt" class="floating-prompt" role="button" tabindex="0" aria-live="polite" aria-hidden="true">
+        Bạn có muốn xem một cá tính khác chứ ?
+    </div>
 
     <button type="button" class="back-to-top" aria-label="Cuộn lên đầu trang">
         <span>&#8593;</span>
