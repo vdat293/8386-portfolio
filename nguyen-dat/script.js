@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    const desktopQuery = window.matchMedia("(min-width: 769px)");
+    const desktopQuery = window.matchMedia("(min-width: 901px)");
     const handleDesktopChange = (event) => {
       if (event.matches) {
         closeNav();
