@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const navToggle = document.querySelector(".nav-toggle");
   const siteNav = document.querySelector(".site-nav");
   const navLinks = document.querySelectorAll(".nav-link");
-  const personaSelect = document.querySelector(".persona-select");
+  const personaToggle = document.querySelector(".persona-toggle");
+  const personaToggleLabel = personaToggle?.querySelector(".persona-toggle-label");
   const heroAvatarEl = document.querySelector("[data-hero-avatar]");
   const heroFrontFace = heroAvatarEl?.querySelector('[data-hero-face="front"]');
   const heroBackFace = heroAvatarEl?.querySelector('[data-hero-face="back"]');
@@ -548,26 +549,28 @@ document.addEventListener("DOMContentLoaded", function () {
     promptEl.setAttribute("aria-label", message);
   };
 
-  const syncPersonaSelect = () => {
-    if (!personaSelect) return;
-    personaSelect.value = persona;
+  const syncPersonaToggle = () => {
+    if (!personaToggle || !personaToggleLabel) return;
+    personaToggle.dataset.persona = persona;
+    personaToggleLabel.textContent = persona === "dat" ? "Đạt" : "Nor";
+    personaToggle.setAttribute("aria-label", `Đang xem: ${persona === "dat" ? "Đạt" : "Nor"}. Nhấn để chuyển`);
   };
 
-  const unlockPersonaSelect = () => {
-    if (!personaSelect || hasUnlockedPersonaSelect) return;
+  const unlockPersonaToggle = () => {
+    if (!personaToggle || hasUnlockedPersonaSelect) return;
     hasUnlockedPersonaSelect = true;
-    personaSelect.hidden = false;
-    personaSelect.removeAttribute("hidden");
-    personaSelect.disabled = false;
-    personaSelect.removeAttribute("disabled");
-    personaSelect.classList.add("is-visible");
-    syncPersonaSelect();
+    personaToggle.hidden = false;
+    personaToggle.removeAttribute("hidden");
+    personaToggle.disabled = false;
+    personaToggle.removeAttribute("disabled");
+    personaToggle.classList.add("is-visible");
+    syncPersonaToggle();
   };
 
   const applyPersona = (nextPersona, { scrollToTop = true, force = false } = {}) => {
     if (!PERSONA_TEXTS[nextPersona]) return;
     if (!force && persona === nextPersona) {
-      syncPersonaSelect();
+      syncPersonaToggle();
       return;
     }
 
@@ -577,7 +580,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (setActiveProfile) setActiveProfile(persona, { immediate: true });
     setHeroImage(persona);
     updatePromptCopy();
-    syncPersonaSelect();
+    syncPersonaToggle();
     setSkillsMode(persona === "nor" ? "achievements" : "skills");
 
     if (scrollToTop) {
@@ -589,16 +592,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   applyPersona("dat", { scrollToTop: false, force: true });
 
-  if (personaSelect) {
-    personaSelect.addEventListener("change", () => {
-      const selectedPersona = personaSelect.value === "nor" ? "nor" : "dat";
+  if (personaToggle) {
+    personaToggle.addEventListener("click", () => {
       if (!hasUnlockedPersonaSelect) {
-        syncPersonaSelect();
+        syncPersonaToggle();
         return;
       }
+      // Toggle between dat and nor
+      const nextPersona = persona === "dat" ? "nor" : "dat";
       closeNav();
       setPromptVisibility(false);
-      applyPersona(selectedPersona, { scrollToTop: false });
+      applyPersona(nextPersona, { scrollToTop: false });
     });
   }
 
@@ -654,7 +658,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       promptHasFired = true;
       disablePrompt();
-      unlockPersonaSelect();
+      unlockPersonaToggle();
       applyPersona("nor", { scrollToTop: true });
       promptEl.removeEventListener("click", handlePromptActivation);
       promptEl.removeEventListener("keydown", handlePromptKeydown);
