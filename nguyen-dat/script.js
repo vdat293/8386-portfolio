@@ -5,9 +5,7 @@ import {
   SKILLS_MODE,
   CAROUSEL_CONFIG,
   OBSERVER_CONFIG,
-  BREAKPOINTS,
-  SOCIAL_CARDS,
-  CONTACT_LINKS
+  BREAKPOINTS
 } from "./constants.js";
 
 const prefersReducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -38,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initProfileSwitcher(elements);
   initHobbyCarousel();
   initPersonaSystem(elements);
-  renderSocialSections();
 
   applyPersona(state.personaKey, { force: true, scrollToTop: false, elements });
 });
@@ -649,40 +646,6 @@ function closeNavMenu() {
   navToggle.classList.remove("is-active");
   navToggle.setAttribute("aria-expanded", "false");
   document.body.classList.remove("no-scroll");
-}
-
-function renderSocialSections() {
-  const cardHost = document.querySelector('[data-social="cards"]');
-  if (cardHost) {
-    cardHost.innerHTML = SOCIAL_CARDS.map(createSocialCardMarkup).join("");
-  }
-
-  const iconHost = document.querySelector('[data-social="icons"]');
-  if (iconHost) {
-    iconHost.innerHTML = CONTACT_LINKS.map(createContactIconMarkup).join("");
-  }
-}
-
-function createSocialCardMarkup(link) {
-  return `
-    <a href="${link.href}" target="_blank" rel="noopener noreferrer" class="social-card ${link.id}" aria-label="Xem ${link.name} của tôi">
-      <div class="icon" aria-hidden="true">
-        ${link.icon}
-      </div>
-      <h3>${link.name}</h3>
-      <p>${link.handle}</p>
-    </a>
-  `.trim();
-}
-
-function createContactIconMarkup(link) {
-  return `
-    <a href="${link.href}" target="_blank" rel="noopener noreferrer" aria-label="Liên hệ qua ${link.name}">
-      <span class="contact-icon" aria-hidden="true">
-        ${link.icon}
-      </span>
-    </a>
-  `.trim();
 }
 
 function addMediaQueryListener(mediaQuery, handler) {
