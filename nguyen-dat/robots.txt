@@ -1,0 +1,10 @@
+# robots.txt for Nguyen Dat Portfolio
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://yourwebsite.com/sitemap.xml
+
+# Crawl-delay (optional)
+Crawl-delay: 10

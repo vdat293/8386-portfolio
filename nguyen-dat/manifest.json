@@ -1,0 +1,27 @@
+{
+  "name": "Nguyễn Vũ Đạt - Portfolio",
+  "short_name": "Đạt Portfolio",
+  "description": "Portfolio của Nguyễn Vũ Đạt - Sinh viên Công nghệ Thông tin chuyên về Web Development và UI/UX Design",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#635bff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "imgs/avatar.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "imgs/avatar.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "education", "business"],
+  "lang": "vi",
+  "dir": "ltr"
+}

@@ -4,24 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyen Dat's Portfolio</title>
-    <!-- Google font -->
+    <meta name="description" content="Portfolio của Nguyễn Vũ Đạt - Sinh viên Công nghệ Thông tin K27 Đại học Bình Dương. Chuyên về Web Development, UI/UX Design và Frontend Technologies.">
+    <meta name="keywords" content="Nguyễn Vũ Đạt, Portfolio, Web Developer, CNTT, Đại học Bình Dương, Frontend Developer, React, JavaScript">
+    <meta name="author" content="Nguyễn Vũ Đạt">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/">
+    <meta property="og:title" content="Nguyễn Vũ Đạt - Portfolio">
+    <meta property="og:description" content="Portfolio của Nguyễn Vũ Đạt - Sinh viên CNTT chuyên về Web Development và UI/UX Design">
+    <meta property="og:image" content="imgs/avatar.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/">
+    <meta property="twitter:title" content="Nguyễn Vũ Đạt - Portfolio">
+    <meta property="twitter:description" content="Portfolio của Nguyễn Vũ Đạt - Sinh viên CNTT chuyên về Web Development và UI/UX Design">
+    <meta property="twitter:image" content="imgs/avatar.png">
+
+    <title>Nguyễn Vũ Đạt - Portfolio | Web Developer & UI/UX Designer</title>
+
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts with display swap for better performance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&family=Sacramento&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&family=Sacramento&display=swap" rel="stylesheet">
+
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Icon fonts are not loaded externally. Social icons are inlined via SVG below. -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imgs/avatar.png">
+    <link rel="apple-touch-icon" href="imgs/avatar.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#635bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/">
 </head>
 
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-to-main">Bỏ qua đến nội dung chính</a>
+
     <!-- Header and navigation -->
     <header class="header">
         <div class="container">
-            <a href="../index.html">
+            <a href="../index.html" aria-label="Về trang chủ">
                 <h1 class="logo">Portfolio</h1>
             </a>
             <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation"
@@ -65,7 +101,12 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="imgs/avatar.png" alt="Ảnh đại diện" />
+                    <div class="hero-avatar" data-hero-avatar>
+                        <img class="hero-face hero-face-front" data-hero-face="front"
+                            src="imgs/avatar.png" alt="Ảnh đại diện của Nguyễn Vũ Đạt" width="320" height="320" />
+                        <img class="hero-face hero-face-back" data-hero-face="back"
+                            src="imgs/avatar.png" alt="" aria-hidden="true" width="320" height="320" />
+                    </div>
                 </div>
             </div>
         </section>
@@ -80,7 +121,7 @@
 
             <div class="container about-container">
                 <div class="about-image">
-                    <img id="profile-photo" src="imgs/img_about.png" alt="Ảnh chân dung — Nguyễn Vũ Đạt" />
+                    <img id="profile-photo" src="imgs/img_about.png" alt="Ảnh chân dung — Nguyễn Vũ Đạt" loading="lazy" width="420" height="416" />
                 </div>
                 <div class="about-text">
                     <div class="intro-header">
@@ -97,21 +138,17 @@
                     <div id="about-details" class="about-details">
                         <p>
                             <span class="meta">Sinh nhật:</span> <span id="dob" class="muted">02/09/2003</span><br>
-                            <span class="meta">Quê quán:</span> <span id="hometown" class="muted">Thái Bình</span><br>
-                            <span id="bio" class="muted">Là sinh viên K27 ngành Công nghệ Thông tin tại Trường Đại học
-                                Bình Dương, tôi là một chàng sinh viên ít nói, đa tình, hiếu học nhưng mà hơi lười ˙𐃷˙.
-                                Thích e-Sport và mê xây dựng trải nghiệm web đẹp mắt.</span>
+                            <span class="meta">Quê quán:</span> <span id="hometown" class="muted">Thái Bình</span>
                         </p>
-                        <h3>Kỹ năng của tôi</h3>
-                        <ul id="skills" class="skills">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>JavaScript</li>
-                            <li>React</li>
-                            <li>Node.js</li>
-                            <li>Tailwind CSS</li>
-                            <li>Figma</li>
-                        </ul>
+                        <div id="bio" class="muted bio-text">
+                            <p>Là sinh viên K27 ngành Công nghệ Thông tin tại Trường Đại học Bình Dương, tôi theo đuổi
+                                mục tiêu trở thành một nhà phát triển web chú trọng trải nghiệm người dùng. Tôi thích
+                                mầy mò giao diện, tối ưu chi tiết nhỏ và biến những ý tưởng phác thảo thành sản phẩm
+                                thực tế.</p>
+                            <p>Ngoài giờ học, tôi dành thời gian tham gia các câu lạc bộ công nghệ, tự học thêm về
+                                thiết kế và viết blog chia sẻ kinh nghiệm cho bạn bè. Tôi tin rằng sự tò mò và tính kỷ
+                                luật là chìa khóa giúp mình tiến bộ mỗi ngày.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,9 +171,9 @@
                         </div>
                         <div class="hobby-image" data-carousel>
                             <img class="hobby-carousel-image is-active" src="imgs/hobby.jpg"
-                                alt="Ảnh minh họa sở thích — chân dung" />
+                                alt="Ảnh minh họa sở thích — chân dung" loading="lazy" width="320" height="320" />
                             <img class="hobby-carousel-image" src="imgs/mika.png"
-                                alt="Ảnh minh họa sở thích — vangnak" />
+                                alt="Ảnh minh họa sở thích — vangnak" loading="lazy" width="320" height="320" />
                         </div>
                         <div class="hobby-panel hobby-panel-right">
                             <h3>Sáng tạo &amp; Mới mẻ</h3>
@@ -197,7 +234,7 @@
                 <div class="achievement-grid">
                     <div class="achievement-card" tabindex="0">
                         <div class="achievement-image">
-                            <img src="imgs/vangnak.jpg" alt="Ảnh thành tựu Vangnak" />
+                            <img src="imgs/vangnak.jpg" alt="Ảnh thành tựu Vangnak" loading="lazy" width="280" height="340" />
                         </div>
                         <div class="achievement-content">
                             <h3>Top 1 Nakroth <br>sever Việt Nam</h3>
@@ -206,7 +243,7 @@
                     </div>
                     <div class="achievement-card" tabindex="0">
                         <div class="achievement-image">
-                            <img src="imgs/thachdau.jpg" alt="Ảnh thành tựu Thách Đấu" />
+                            <img src="imgs/thachdau.jpg" alt="Ảnh thành tựu Thách Đấu" loading="lazy" width="280" height="340" />
                         </div>
                         <div class="achievement-content">
                             <h3>Top 1 thách đấu <br> liên quân</h3>
@@ -226,25 +263,25 @@
                     <!-- Project card 1: Quiz -->
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="imgs/quiz_project.png" alt="Quiz project image" />
+                            <img src="imgs/quiz_project.png" alt="Quiz project image" loading="lazy" width="300" height="360" />
                         </div>
                         <div class="project-content">
                             <h3>Quiz</h3>
                             <p>Dự án tạo một web quiz để cho mọi thành viên trong nhóm sử dụng học tập</p>
-                            <a href="https://quizqp3.netlify.app" target="_blank" class="project-link">Xem chi tiết
+                            <a href="https://quizqp3.netlify.app" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Xem chi tiết dự án Quiz">Xem chi tiết
                                 →</a>
                         </div>
                     </div>
                     <!-- Project card 2: Date -->
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="imgs/date_project.png" alt="Date project image" />
+                            <img src="imgs/date_project.png" alt="Date project image" loading="lazy" width="300" height="360" />
                         </div>
                         <div class="project-content">
                             <h3>Date</h3>
                             <p>Tính ngày yêu nhau</p>
-                            <a href="https://6845cbc74a66e7fa5db0ece1--steady-swan-da8f80.netlify.app" target="_blank"
-                                class="project-link">Xem chi tiết →</a>
+                            <a href="https://6845cbc74a66e7fa5db0ece1--steady-swan-da8f80.netlify.app" target="_blank" rel="noopener noreferrer"
+                                class="project-link" aria-label="Xem chi tiết dự án Date">Xem chi tiết →</a>
                         </div>
                     </div>
                 </div>
@@ -260,16 +297,16 @@
                     <div class="certificate-card" tabindex="0">
                         <div class="certificate-inner">
                             <div class="certificate-face certificate-front">
-                                <img src="imgs/cert.png" alt="Biểu tượng chứng chỉ" class="certificate-icon" />
+                                <img src="imgs/cert.png" alt="Biểu tượng chứng chỉ" class="certificate-icon" loading="lazy" width="160" height="160" />
                                 <h3>Certificate</h3>
                                 <p>Chứng chỉ BACSIC ANALOG IC DESIGN</p>
                                 <p class="certificate-hint">Di chuột để xem hình chứng chỉ</p>
                             </div>
                             <div class="certificate-face certificate-back">
-                                <a href="imgs/chung_chi.jpg" target="_blank"
+                                <a href="imgs/chung_chi.jpg" target="_blank" rel="noopener noreferrer"
                                     aria-label="Xem chứng chỉ BACSIC ANALOG IC DESIGN">
                                     <img src="imgs/chung_chi.jpg" alt="Chứng chỉ BACSIC ANALOG IC DESIGN"
-                                        class="certificate-image" />
+                                        class="certificate-image" loading="lazy" />
                                 </a>
                             </div>
                         </div>
@@ -283,8 +320,8 @@
             <h2>Kết bạn nhé</h2>
             <p>Đây là một số mạng xã hội mình đang sử dụng <br> Hân hạnh được làm quen ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧</p>
             <div class="social-links">
-                <a href="https://github.com/vdat293" target="_blank" class="social-card github">
-                    <div class="icon">
+                <a href="https://github.com/vdat293" target="_blank" rel="noopener noreferrer" class="social-card github" aria-label="Xem GitHub của tôi">
+                    <div class="icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path
                                 d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.55v-1.93c-3.2.7-3.88-1.39-3.88-1.39-.53-1.35-1.29-1.71-1.29-1.71-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.26 3.4.96.1-.75.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.3 1.19-3.12-.12-.29-.52-1.45.11-3.03 0 0 .97-.31 3.18 1.18.92-.26 1.91-.4 2.89-.4.98 0 1.97.14 2.89.4 2.21-1.49 3.18-1.18 3.18-1.18.63 1.58.23 2.74.11 3.03.74.82 1.19 1.86 1.19 3.12 0 4.42-2.69 5.39-5.26 5.68.42.37.78 1.09.78 2.2v3.26c0 .3.21.66.8.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
@@ -294,8 +331,8 @@
                     <p>@vdat293</p>
                 </a>
 
-                <a href="https://www.tiktok.com/@ng.vdat293" target="_blank" class="social-card tiktok">
-                    <div class="icon">
+                <a href="https://www.tiktok.com/@ng.vdat293" target="_blank" rel="noopener noreferrer" class="social-card tiktok" aria-label="Xem TikTok của tôi">
+                    <div class="icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path
                                 d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
@@ -305,8 +342,8 @@
                     <p>@ng.vdat293</p>
                 </a>
 
-                <a href="https://www.facebook.com/ng.vdat293" target="_blank" class="social-card facebook">
-                    <div class="icon">
+                <a href="https://www.facebook.com/ng.vdat293" target="_blank" rel="noopener noreferrer" class="social-card facebook" aria-label="Xem Facebook của tôi">
+                    <div class="icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path
                                 d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.406.593 24 1.325 24H12.82V14.706H9.692v-3.6h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.324 0 2.464.099 2.795.143v3.24l-1.92.001c-1.506 0-1.798.716-1.798 1.765v2.315h3.594l-.468 3.6h-3.126V24h6.127C23.407 24 24 23.406 24 22.674V1.326C24 .593 23.407 0 22.675 0z" />
@@ -316,8 +353,8 @@
                     <p>Nguyễn Đạt</p>
                 </a>
 
-                <a href="https://www.instagram.com/ng.vdat293" target="_blank" class="social-card instagram">
-                    <div class="icon">
+                <a href="https://www.instagram.com/ng.vdat293" target="_blank" rel="noopener noreferrer" class="social-card instagram" aria-label="Xem Instagram của tôi">
+                    <div class="icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path
                                 d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 3.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2A3 3 0 1 0 12 15a3 3 0 0 0 0-5.5Zm5.75-2.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
@@ -335,28 +372,28 @@
                 <h2>Liên hệ với tôi</h2>
                 <p>Tôi luôn sẵn lòng lắng nghe các cơ hội mới. Hãy liên hệ với tôi qua email hoặc các mạng xã hội bên
                     dưới.</p>
-                <a href="mailto:ng.vdat293@gmail.com" class="btn primary-btn">Gửi Email</a>
+                <a href="mailto:ng.vdat293@gmail.com" class="btn primary-btn" aria-label="Gửi email cho tôi">Gửi Email</a>
                 <div class="contact-social-links">
-                    <a href="https://www.facebook.com/ng.vdat293" target="_blank" aria-label="Facebook">
+                    <a href="https://www.facebook.com/ng.vdat293" target="_blank" rel="noopener noreferrer" aria-label="Liên hệ qua Facebook">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <title>Facebook</title>
                             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/ng.vdat293" target="_blank" aria-label="Instagram">
+                    <a href="https://www.instagram.com/ng.vdat293" target="_blank" rel="noopener noreferrer" aria-label="Liên hệ qua Instagram">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <title>Instagram</title>
                             <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                             <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                         </svg>
                     </a>
-                    <a href="https://www.tiktok.com/@ng.vdat293" target="_blank" aria-label="TikTok">
+                    <a href="https://www.tiktok.com/@ng.vdat293" target="_blank" rel="noopener noreferrer" aria-label="Liên hệ qua TikTok">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <title>TikTok</title>
                             <path
                                 d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
@@ -382,8 +419,37 @@
         <p>Have a good day. Love you ⸜(｡˃ ᵕ ˂ )⸝♡</p>
     </footer>
 
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nguyễn Vũ Đạt",
+      "alternateName": "Nor",
+      "jobTitle": "Web Developer",
+      "description": "Sinh viên Công nghệ Thông tin K27 Đại học Bình Dương, chuyên về Web Development và UI/UX Design",
+      "url": "https://yourwebsite.com",
+      "email": "ng.vdat293@gmail.com",
+      "birthDate": "2003-09-02",
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Đại học Bình Dương"
+      },
+      "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "Node.js", "Tailwind CSS", "Figma", "UI/UX Design"],
+      "sameAs": [
+        "https://github.com/vdat293",
+        "https://www.facebook.com/ng.vdat293",
+        "https://www.instagram.com/ng.vdat293",
+        "https://www.tiktok.com/@ng.vdat293"
+      ]
+    }
+    </script>
+
     <!-- Main script -->
     <script src="script.js"></script>
+
+    <!-- Advanced Animations -->
+    <script src="animations.js"></script>
 </body>
 
 </html>
