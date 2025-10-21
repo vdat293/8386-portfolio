@@ -803,8 +803,8 @@ body.no-scroll {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
-  padding: 4rem 0;
+  min-height: 85vh;
+  padding: 3rem 0 2.5rem 0;
 }
 
 .hero-container {
@@ -930,12 +930,12 @@ body.no-scroll {
 
 /* About section */
 .about-section {
-  padding: 4rem 0;
+  padding: 3rem 0 2.5rem 0;
 }
 
 .about-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .about-header h4 {
@@ -1084,7 +1084,7 @@ body.no-scroll {
 }
 
 .hobby-section {
-  padding: 4rem 0;
+  padding: 3rem 0 2.5rem 0;
 }
 
 .hobby-slide {
@@ -1184,8 +1184,8 @@ body.no-scroll {
 }
 
 .social-section {
-  min-height: 80vh;
-  padding: 4rem 0;
+  min-height: auto;
+  padding: 3rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1304,7 +1304,7 @@ body.no-scroll {
 }
 
 .projects-section {
-  padding: 4rem 0;
+  padding: 3rem 0 2.5rem 0;
 }
 
 .projects-section h2 {
@@ -1474,7 +1474,7 @@ body.no-scroll {
   }
 
   .achievement-image {
-    height: 220px;
+    height: 180px;
   }
 
   .achievement-card:hover,
@@ -1636,7 +1636,7 @@ body.no-scroll {
 }
 
 .skills-section {
-  padding: 4rem 0;
+  padding: 2rem 0 1.5rem 0;
 }
 
 .skills-heading,
@@ -1644,7 +1644,7 @@ body.no-scroll {
   font-size: 2rem;
   color: var(--primary-color);
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(-15px);
 }
@@ -1656,15 +1656,17 @@ body.no-scroll {
 .skills-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.75rem;
   opacity: 0;
   transform: translateY(20px);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
   opacity: 0;
   transform: translateY(20px);
 }
@@ -1705,19 +1707,19 @@ body.no-scroll {
 .achievement-grid {
   display: none;
   width: 100%;
-  max-width: 65%;
-  margin: 2rem auto 0;
+  max-width: 90%;
+  margin: 0.5rem auto 0;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.2rem;
   justify-content: center;
   opacity: 0;
   transform: translateY(20px);
 }
 
 .achievement-card {
-  --achievement-peek: 5rem;
-  width: clamp(240px, 28vw, 280px);
-  height: 340px;
+  --achievement-peek: 4rem;
+  width: clamp(220px, 28vw, 260px);
+  height: 300px;
   position: relative;
   background-color: var(--surface-color);
   border-radius: 0.75rem;
@@ -1828,7 +1830,7 @@ body.no-scroll {
 
 @media (max-width: 600px) {
   .skills-section {
-    padding: 3rem 0;
+    padding: 2rem 0 1.5rem 0;
   }
 
   .skill-info {
@@ -1844,7 +1846,8 @@ body.no-scroll {
   }
 
   .achievement-card {
-    width: min(100%, 320px);
+    width: min(100%, 280px);
+    height: 280px;
   }
 }
 
@@ -1960,7 +1963,7 @@ body.dark .achievement-grid {
 
 /* Contact section */
 .contact-section {
-  padding: 4rem 0;
+  padding: 2.5rem 0 2rem 0;
 }
 
 .contact-section h2 {
@@ -2074,7 +2077,7 @@ body.dark .achievement-grid {
   background-color: var(--footer-bg);
   color: var(--text-on-primary);
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 1.2rem 0;
   font-size: 0.9rem;
 }
 
