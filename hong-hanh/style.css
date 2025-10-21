@@ -1492,9 +1492,7 @@ footer p {
     }
 
     .floating-card {
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -40px;
+        display: none;
     }
 
     .about-grid,
