@@ -2983,6 +2983,7 @@ body.dark .skill-fill::after {
 
   .logo {
     flex: 1;
+    margin-left: 1rem;
   }
 
   .nav-toggle {
@@ -3317,6 +3318,7 @@ body.dark .skill-fill::after {
 
   .logo {
     font-size: 1.4rem;
+    margin-left: 1rem;
   }
 
   .nav-list {

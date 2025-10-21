@@ -50,7 +50,6 @@ export const PROFILES = {
 // Prompt messages
 export const PROMPT_MESSAGE = {
   dat: "Bạn có muốn xem một cá tính khác chứ ?",
-  nor: "Bạn muốn về lại nhân cách cũ chứ ?"
 };
 
 // Skills mode configuration

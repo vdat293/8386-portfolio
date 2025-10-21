@@ -161,19 +161,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // ============================================
   // 5. Smooth Reveal for Skill Bars
   // ============================================
-  const skillBars = document.querySelectorAll('.skill-fill');
-
-  const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const bar = entry.target;
-        bar.style.transform = 'scaleX(1)';
-        skillObserver.unobserve(bar);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  skillBars.forEach(bar => skillObserver.observe(bar));
+  // Note: Skill bar animations are now handled by CSS in style.css
+  // using the .skills-section.scroll-animate.is-visible .skill-fill animation
+  // This avoids conflicts and provides better performance
 
   // ============================================
   // 6. Image Lazy Load with Blur Effect
