@@ -4,220 +4,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Hồng Hạnh</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Poppins", sans-serif;
-            color: #444;
-            min-height: 100vh;
-            background-image: url(image.png);
-            background-size: cover;
-            background-position: center;
-            border-radius: 25px;
-            padding: 50px;
-            animation: gradientMove 12s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 20px 20px;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            text-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        nav span {
-            margin: 0 15px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        nav span:hover {
-            color: #1a0e11;
-            transform: scale(1.1);
-        }
-
-        .download-btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 600;
-            background: linear-gradient(135deg, #f7a1b5, #b37cd5);
-            color: #fff;
-            text-decoration: none;
-            box-shadow: 0 8px 18px rgba(193, 128, 168, 0.35);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(169, 110, 154, 0.45);
-        }
-
-        section {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
-            backdrop-filter: blur(10px);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #9c5858;
-            text-shadow: 0 0 10px rgba(167, 121, 128, 0.7);
-        }
-
-        p {
-            font-size: 1rem;
-            line-height: 1.7;
-            text-align: center;
-        }
-
-        .skills {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .skill {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 15px 30px;
-            border-radius: 15px;
-            margin: 10px;
-            transition: 0.3s;
-        }
-
-        .skill:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            opacity: 0.8;
-        }
-
-        footer a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        footer a:hover {
-            color: #ffebf0;
-        }
-    </style>
+    <meta name="description" content="Portfolio của Hồng Hạnh - Nhà thiết kế đồ họa sáng tạo tại Bình Dương">
+    <title>Hồng Hạnh - Designer & Creative Storyteller</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1>Portfolio Hồng Hạnh</h1>
-        <p>Đậm cá tính • Sáng tạo • Cảm xúc</p>
-        <a class="download-btn" href="assets/cv.pdf" download>Tải CV</a>
-    </header>
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" aria-label="Toggle theme" title="Chuyển đổi theme">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
 
-    <nav>
-        <span>About</span>
-        <span>Education</span>
-        <span>Experience</span>
-        <span>Skills</span>
-        <span>Contact</span>
-    </nav>
+    <div class="container">
+        <nav class="main-nav" id="mainNav">
+            <a href="#home" class="brand" aria-label="Trang chủ">
+                <span class="brand-text">Hồng Hạnh</span>
+                <span class="brand-dot"></span>
+            </a>
 
-    <section id="about">
-        <h2>Giới thiệu</h2>
-        <p>
-            Xin chào, mình là <b>Hồng Hạnh</b> — một sinh viên thiết kế đồ họa với niềm đam mê sáng tạo và yêu thích
-            nghệ thuật.
-            Mình luôn tìm kiếm cách thể hiện cảm xúc qua màu sắc, bố cục và phong cách thiết kế mang dấu ấn riêng.
-        </p>
-    </section>
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link">Giới thiệu</a>
+                <a href="#projects" class="nav-link">Dự án</a>
+                <a href="#journey" class="nav-link">Hành trình</a>
+                <a href="#certificates" class="nav-link">Học tập</a>
+                <a href="#skills" class="nav-link">Kỹ năng</a>
+                <a href="#contact" class="nav-link">Liên hệ</a>
+            </div>
 
-    <section id="education">
-        <h2>Học vấn</h2>
-        <p>
-            🎓 Sinh viên ngành Công nghệ Thông tin – chuyên ngành Thiết kế Đồ họa.<br>
-            📍 Trường: Đại học tại Bình Dương<br>
-            💡 Mục tiêu: Trở thành nhà thiết kế 2D/3D chuyên nghiệp, tạo nên trải nghiệm đẹp và dễ dùng cho người dùng.
-        </p>
-    </section>
+            <div class="nav-actions">
+                <a class="nav-cta" href="assets/cv.pdf" download>
+                    <span>Tải CV</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
 
-    <section id="experience">
-        <h2>Kinh nghiệm</h2>
-        <p>
-            💼 Đã tham gia các dự án thiết kế giao diện web/app nhỏ trong quá trình học.<br>
-            🧠 Có kinh nghiệm sử dụng Figma, Photoshop và Illustrator.<br>
-            ✨ Tập trung vào phong cách hiện đại, tinh tế và cảm xúc.
-        </p>
-    </section>
+        <header id="home">
+            <div class="hero reveal-section">
+                <div class="hero-text">
+                    <span class="hero-badge fade-in-up" style="animation-delay: 0.1s">
+                        <span class="badge-icon">✨</span>
+                        Designer • Storyteller • Dreamer
+                    </span>
+                    <h1 class="hero-title fade-in-up" style="animation-delay: 0.2s">
+                        Xin chào, mình là <span class="gradient-text">Hồng Hạnh</span> – tạo nên cảm xúc bằng sắc hồng và ý tưởng.
+                    </h1>
+                    <p class="hero-description fade-in-up" style="animation-delay: 0.3s">
+                        Sinh viên thiết kế đồ họa tại Bình Dương, mình yêu việc kể chuyện bằng hình ảnh,
+                        tạo ra trải nghiệm trực quan chạm tới cảm xúc và giúp thương hiệu trở nên gần gũi hơn.
+                    </p>
+                    <div class="hero-buttons fade-in-up" style="animation-delay: 0.4s">
+                        <a class="btn-primary ripple" href="#contact">
+                            <span>Kết nối ngay</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a class="btn-secondary ripple" href="#projects">
+                            <span>Xem dự án</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats fade-in-up" style="animation-delay: 0.5s">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="2">0</span>
+                            <span class="stat-label">Dự án</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="2">0</span>
+                            <span class="stat-label">Năm học</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="5">0</span>
+                            <span class="stat-label">Kỹ năng</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-portrait fade-in-right" style="animation-delay: 0.3s">
+                    <div class="portrait-frame">
+                        <div class="portrait-gradient"></div>
+                        <img src="avt.jpg" alt="Chân dung Hồng Hạnh" loading="lazy">
+                        <div class="portrait-decoration decoration-1"></div>
+                        <div class="portrait-decoration decoration-2"></div>
+                    </div>
+                    <div class="floating-card">
+                        <svg class="quote-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                        </svg>
+                        <p>
+                            Phong cách của mình hướng đến sự hiện đại, nữ tính và tinh tế – mỗi chi tiết đều có lý do
+                            để hiện diện.
+                        </p>
+                    </div>
 
-    <section id="skills">
-        <h2>Kỹ năng</h2>
-        <div class="skills">
-            <div class="skill">🎨 Photoshop</div>
-            <div class="skill">🖌 Illustrator</div>
-            <div class="skill">💻 Figma</div>
-            <div class="skill">🌈 2D/3D Design</div>
-            <div class="skill">🧩 HTML & CSS</div>
-        </div>
-    </section>
+                    <!-- Floating elements -->
+                    <div class="floating-element element-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                    </div>
+                    <div class="floating-element element-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                            <path d="M2 2l7.586 7.586"></path>
+                            <circle cx="11" cy="11" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="floating-element element-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <section id="contact">
-        <h2>Liên hệ</h2>
-        <p>
-            📧 Email: <a href="mailto:24050127@student.bdu.edu.vn"
-                style="color:#5a4f8a;">24050127@student.bdu.edu.vn</a><br>
-            📱 SĐT: 0783162031<br>
-            💬 Kết nối: <a href="#" style="color:#5a4f8a;">Facebook | Behance | Instagram</a>
-        </p>
-    </section>
+        <main>
+            <!-- About Section -->
+            <section id="about" class="reveal-section">
+                <div class="section-header">
+                    <span class="section-badge">Về mình</span>
+                    <h2 class="section-title">Giới thiệu</h2>
+                    <p class="section-description">Câu chuyện và hành trình sáng tạo của mình</p>
+                </div>
+                <div class="section-card about-grid">
+                    <div class="about-content">
+                        <p class="about-intro">
+                            Mình là <strong>Hồng Hạnh</strong>, luôn đắm mình trong thế giới màu sắc và bố cục.
+                            Mỗi dự án là cơ hội để mình thổi hồn vào những câu chuyện mới, biến những ý tưởng thành trải
+                            nghiệm thị giác tinh tế và đầy cảm xúc.
+                        </p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                <span>Chuyên nghiệp</span>
+                            </div>
+                            <div class="feature-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                </svg>
+                                <span>Sáng tạo</span>
+                            </div>
+                            <div class="feature-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                                <span>Tâm huyết</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                            </div>
+                            <span>Chuyên ngành</span>
+                            <p>Công nghệ Thông tin – Thiết kế Đồ họa, Đại học Bình Dương.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                </svg>
+                            </div>
+                            <span>Sứ mệnh</span>
+                            <p>Trở thành nhà thiết kế 2D/3D mang đến giao diện đẹp, trực quan và giàu cảm xúc cho người dùng.</p>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </div>
+                            <span>Giá trị</span>
+                            <p>Tỉ mỉ trong từng chi tiết, thấu hiểu người dùng và truyền cảm hứng bằng sự nữ tính hiện đại.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <footer>
-        © 2025 Hồng Hạnh | Thiết kế với 💗 và sự sáng tạo
-    </footer>
+            <!-- Projects Section -->
+            <section id="projects" class="reveal-section">
+                <div class="section-header">
+                    <span class="section-badge">Portfolio</span>
+                    <h2 class="section-title">Dự án nổi bật</h2>
+                    <p class="section-description">Những sản phẩm mình đã thực hiện với tâm huyết</p>
+                </div>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&h=400&fit=crop" alt="Brand Identity Project" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" aria-label="Xem chi tiết dự án">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Branding</span>
+                                <span class="project-tag">School Project</span>
+                            </div>
+                            <h3 class="project-title">Brand Identity Design</h3>
+                            <p class="project-description">Dự án môn học: Thiết kế nhận diện thương hiệu hoàn chỉnh với logo, color palette và typography hài hòa.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?w=600&h=400&fit=crop" alt="UI/UX Design Project" loading="lazy">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" aria-label="Xem chi tiết dự án">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">UI/UX</span>
+                                <span class="project-tag">Personal Project</span>
+                            </div>
+                            <h3 class="project-title">E-commerce App Concept</h3>
+                            <p class="project-description">Dự án cá nhân: Thiết kế concept giao diện ứng dụng mua sắm với trải nghiệm người dùng tối ưu.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Journey Section -->
+            <section id="journey" class="reveal-section">
+                <div class="section-header">
+                    <span class="section-badge">Hành trình</span>
+                    <h2 class="section-title">Học vấn & Kinh nghiệm</h2>
+                    <p class="section-description">Những bước đi đánh dấu sự phát triển của mình</p>
+                </div>
+                <div class="section-card journey-grid">
+                    <div class="journey-column">
+                        <div class="journey-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                            </svg>
+                            <h2>Học vấn</h2>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                    </svg>
+                                </div>
+                                <h3>Sinh viên năm 2 - Công nghệ Thông tin</h3>
+                                <span class="timeline-date">Đại học Bình Dương • 2023 - 2027</span>
+                                <p>
+                                    Chuyên ngành Thiết kế Đồ họa. Đang tích cực học hỏi về mỹ thuật số, thiết kế UI/UX,
+                                    kỹ thuật đồ họa và nghệ thuật kể chuyện bằng hình ảnh. Nhiệt huyết tham gia các
+                                    workshop, dự án nhóm và hoạt động sáng tạo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="journey-column">
+                        <div class="journey-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                            <h2>Kinh nghiệm</h2>
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                    </svg>
+                                </div>
+                                <h3>Dự án học thuật & cá nhân</h3>
+                                <span class="timeline-date">2023 – Nay</span>
+                                <p>
+                                    Thực hiện các concept website/app trên Figma, phối hợp cùng bạn học để hoàn thiện
+                                    bộ nhận diện thương hiệu và sản phẩm truyền thông đa nền tảng.
+                                </p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                        <path d="M2 2l7.586 7.586"></path>
+                                        <circle cx="11" cy="11" r="2"></circle>
+                                    </svg>
+                                </div>
+                                <h3>Kỹ năng công cụ</h3>
+                                <span class="timeline-date">Photoshop • Illustrator • Figma</span>
+                                <p>
+                                    Thành thạo xử lý hình ảnh, vẽ minh họa vector và thiết kế giao diện, kết hợp tư duy
+                                    chuyển động để tạo trải nghiệm nhất quán.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certificates Section -->
+            <section id="certificates" class="reveal-section">
+                <div class="section-header">
+                    <span class="section-badge">Chứng chỉ</span>
+                    <h2 class="section-title">Chứng chỉ & Giải thưởng</h2>
+                    <p class="section-description">Các chứng nhận và thành tích chuyên môn</p>
+                </div>
+                <div class="section-card certificates-empty-state">
+                    <div class="empty-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Hiện chưa có chứng chỉ</h3>
+                    <p>Mình đang trong quá trình học tập và tích lũy kinh nghiệm. Các chứng chỉ chuyên môn sẽ được cập nhật khi hoàn thành.</p>
+                    <div class="coming-soon-badge">Sắp cập nhật</div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="reveal-section">
+                <div class="section-header">
+                    <span class="section-badge">Kỹ năng</span>
+                    <h2 class="section-title">Kỹ năng nổi bật</h2>
+                    <p class="section-description">Những công cụ và thế mạnh giúp mình tạo ra các sản phẩm đậm chất riêng</p>
+                </div>
+                <div class="section-card">
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                            </div>
+                            <h3>Photoshop</h3>
+                            <p>Chỉnh sửa ảnh chuyên nghiệp</p>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                    <path d="M2 2l7.586 7.586"></path>
+                                    <circle cx="11" cy="11" r="2"></circle>
+                                </svg>
+                            </div>
+                            <h3>Illustrator</h3>
+                            <p>Thiết kế vector sáng tạo</p>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </div>
+                            <h3>Figma</h3>
+                            <p>UI/UX Design & Prototyping</p>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                            </div>
+                            <h3>2D & 3D Design</h3>
+                            <p>Thiết kế đa chiều sống động</p>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
+                            <h3>UI/UX Layout</h3>
+                            <p>Trải nghiệm người dùng tối ưu</p>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card">
+                            <div class="skill-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <h3>HTML & CSS</h3>
+                            <p>Front-end development cơ bản</p>
+                            <div class="skill-level">
+                                <div class="skill-bar" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="reveal-section">
+                <div class="section-header">
+                    <span class="section-badge">Liên hệ</span>
+                    <h2 class="section-title">Kết nối với mình</h2>
+                    <p class="section-description">Luôn sẵn sàng cho những cuộc trò chuyện mới và dự án đầy cảm hứng</p>
+                </div>
+                <div class="section-card contact-card">
+                    <div class="contact-content">
+                        <p class="contact-intro">
+                            Hãy gửi mình một lời nhắn, chúng ta cùng tạo nên điều tuyệt đẹp nhé!
+                        </p>
+                        <div class="contact-methods">
+                            <a href="mailto:24050127@student.bdu.edu.vn" class="contact-method">
+                                <div class="contact-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="contact-info">
+                                    <span class="contact-label">Email</span>
+                                    <span class="contact-value">24050127@student.bdu.edu.vn</span>
+                                </div>
+                            </a>
+                            <a href="tel:0783162031" class="contact-method">
+                                <div class="contact-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <div class="contact-info">
+                                    <span class="contact-label">Điện thoại</span>
+                                    <span class="contact-value">0783 162 031</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="social-links">
+                            <span class="social-label">Mạng xã hội</span>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon" aria-label="Facebook">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-icon" aria-label="Behance">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-icon" aria-label="Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-icon" aria-label="LinkedIn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>© 2025 <span class="gradient-text">Hồng Hạnh</span></p>
+                <p class="footer-tagline">Thiết kế bằng sự dịu dàng và sáng tạo</p>
+                <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                        <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Cursor follower -->
+    <div class="cursor-follower" id="cursorFollower"></div>
 </body>
 
 </html>
