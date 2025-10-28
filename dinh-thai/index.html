@@ -6,65 +6,419 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nguyễn Phan Đình Thái - Portfolio</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
-    <header>
-        <h1>Nguyễn Phan Đình Thái</h1>
-        <p>Sinh viên Công nghệ thông tin</p>
-        <a href="#contact" class="btn">Liên hệ</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">NPĐThái</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Trang chủ</a></li>
+                <li><a href="#about" class="nav-link">Giới thiệu</a></li>
+                <li><a href="#skills" class="nav-link">Kỹ năng</a></li>
+                <li><a href="#education" class="nav-link">Học vấn</a></li>
+                <li><a href="#projects" class="nav-link">Dự án</a></li>
+                <li><a href="#contact" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="greeting">Xin chào, tôi là</p>
+                <h1 class="hero-title">Nguyễn Phan Đình Thái</h1>
+                <p class="hero-subtitle">Sinh viên Công nghệ Thông tin | K27</p>
+                <p class="hero-description">
+                    Đam mê phát triển web và tạo ra những trải nghiệm số ý nghĩa
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Liên hệ với tôi</a>
+                    <a href="#projects" class="btn btn-secondary">Xem dự án</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="mailto:24030040@student.bdu.edu.vn" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <img src="avt.jpg" alt="Nguyễn Phan Đình Thái">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
     </header>
 
-    <section id="about">
-        <h2>Giới thiệu</h2>
-        <p>
-            Mình là Nguyễn Phan Đình Thái — sinh viên Công nghệ thông tin, đam mê
-            phát triển ứng dụng web và trí tuệ nhân tạo. Mình thích xây dựng giao diện
-            hiện đại, hiệu năng tốt và trải nghiệm người dùng thân thiện.
-        </p>
-    </section>
-
-    <section id="skills">
-        <h2>Kỹ năng</h2>
-        <ul class="skills">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>React</li>
-            <li>SQL</li>
-            <li>Git</li>
-            <li>Linux</li>
-        </ul>
-    </section>
-
-    <section id="projects">
-        <h2>Dự án</h2>
-
-        <div class="project">
-            <h3>Ứng dụng Quản lý Sinh viên</h3>
-            <p>
-                Ứng dụng web cho phép quản lý thông tin sinh viên, điểm số và lớp học.
-                Tính năng: CRUD sinh viên, upload CSV, tìm kiếm, phân trang.
-            </p>
-            <p><strong>Công nghệ:</strong> React, Node.js, MongoDB</p>
-        </div>
-
-        <div class="project">
-            <h3>Trang Web Học Lập Trình Online</h3>
-            <p>
-                Website cung cấp bài học và quiz lập trình cơ bản. Giao diện responsive,
-                dễ dùng, tích hợp đăng nhập Firebase.
-            </p>
-            <p><strong>Công nghệ:</strong> HTML, CSS, JavaScript, Firebase</p>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Giới thiệu về tôi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Xin chào! Tôi là <strong>Nguyễn Phan Đình Thái</strong>, sinh viên năm thứ 2 chuyên ngành
+                        Công nghệ Thông tin tại Đại học Bình Dương. Với niềm đam mê về công nghệ và lập trình,
+                        tôi luôn tìm kiếm cơ hội để học hỏi và phát triển kỹ năng của mình.
+                    </p>
+                    <p>
+                        Tôi đặc biệt quan tâm đến phát triển web, xây dựng giao diện người dùng hiện đại và
+                        tạo ra những ứng dụng có ý nghĩa. Mục tiêu của tôi là trở thành một lập trình viên
+                        full-stack chuyên nghiệp và đóng góp cho sự phát triển của ngành công nghệ thông tin.
+                    </p>
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <i class="fas fa-birthday-cake"></i>
+                            <h4>Ngày sinh</h4>
+                            <p>07/04/2005</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Địa điểm</h4>
+                            <p>Bình Dương, Việt Nam</p>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Trình độ</h4>
+                            <p>Đại học</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Liên hệ</h2>
-        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-        <p>© 2025 Nguyễn Phan Đình Thái — Made with ❤️</p>
+    <!-- Education Section -->
+    <section id="education" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Học vấn</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Hiện tại</div>
+                        <h3>Đại học Bình Dương</h3>
+                        <h4>Cử nhân Công nghệ Thông tin - K27</h4>
+                        <p>
+                            Đang theo học chuyên ngành Công nghệ Thông tin với các môn học chính:
+                            Lập trình Web, Cấu trúc dữ liệu và giải thuật, Cơ sở dữ liệu,
+                            Lập trình hướng đối tượng, Mạng máy tính.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Kỹ năng của tôi</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML5</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>CSS3</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>React</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Node.js</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>SQL</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>MongoDB</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Others</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Git & GitHub</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>VS Code</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Linux</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Figma</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Dự án của tôi</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Hệ thống Quản lý Sinh viên</h3>
+                    <p>
+                        Ứng dụng web toàn diện để quản lý thông tin sinh viên, điểm số và lớp học.
+                        Bao gồm các tính năng CRUD hoàn chỉnh, upload file CSV, tìm kiếm nâng cao,
+                        phân trang và xuất báo cáo.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Express</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Website Học Lập Trình Online</h3>
+                    <p>
+                        Nền tảng học tập trực tuyến cung cấp các bài học lập trình từ cơ bản đến nâng cao.
+                        Tích hợp hệ thống quiz, theo dõi tiến độ học tập và xác thực người dùng qua Firebase.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Website Thương mại Điện tử</h3>
+                    <p>
+                        Trang web bán hàng trực tuyến với đầy đủ tính năng giỏ hàng, thanh toán,
+                        quản lý đơn hàng và tìm kiếm sản phẩm. Giao diện responsive và thân thiện
+                        với người dùng.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Redux</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Dashboard Phân tích Dữ liệu</h3>
+                    <p>
+                        Ứng dụng trực quan hóa dữ liệu với các biểu đồ tương tác, báo cáo thống kê
+                        và phân tích xu hướng. Sử dụng các thư viện biểu đồ hiện đại để hiển thị
+                        dữ liệu một cách trực quan.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Liên hệ với tôi</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p class="contact-text">
+                        Tôi luôn sẵn sàng kết nối và thảo luận về các cơ hội hợp tác, dự án mới
+                        hoặc đơn giản là trò chuyện về công nghệ. Đừng ngại liên hệ với tôi!
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:24030040@student.bdu.edu.vn">24030040@student.bdu.edu.vn</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Điện thoại</h4>
+                                <p>0376125835</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Địa chỉ</h4>
+                                <p>Bình Dương, Việt Nam</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tin nhắn</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Nguyễn Phan Đình Thái. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
