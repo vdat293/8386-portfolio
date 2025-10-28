@@ -31,11 +31,13 @@ export const PERSONA_CONFIG = {
       photo: "imgs/img_about.png",
       alt: "Ảnh chân dung — Nguyễn Vũ Đạt",
       dob: "02/09/2003",
-      hometown: "Thái Bình",
+      hometown: "Thái Bình cũ (bây giờ là Hưng Yên)",
       bio: `
         <p>Là sinh viên K27 ngành Công nghệ Thông tin tại Đại học Bình Dương, tôi dành nhiều thời gian đào sâu vào front-end và cách con người tương tác với sản phẩm số. Tôi thường tự đặt câu hỏi “người dùng thật sự cần gì” trước khi bắt tay vào viết từng dòng code.</p>
-        <p>Trong các dự án gần đây, tôi chịu trách nhiệm khảo sát nhu cầu, phác thảo wireframe, xây dựng UI component và đảm bảo trang web chạy mượt trên nhiều thiết bị. Mỗi lần hoàn thành một bản build ổn định, tôi đều ghi chép lại bài học để chia sẻ cùng bạn bè trong lớp.</p>
-        <p>Ngoài việc học, tôi thích đọc sách về thiết kế, tham gia workshop công nghệ và luyện tập e-Sport để cân bằng. Tôi luôn tin sự kiên trì và tinh thần khám phá là chìa khóa giúp mình tiến bộ từng ngày.</p>
+        <p>Ngoài giờ học, tôi dành thời gian tham gia các câu lạc bộ công nghệ, tự học thêm về
+                                thiết kế và viết blog chia sẻ kinh nghiệm cho bạn bè. Tôi tin rằng sự tò mò và tính kỷ
+                                luật là chìa khóa giúp mình tiến bộ mỗi ngày.</p>
+        <p>Tôi còn thích đọc sách về thiết kế, tham gia workshop công nghệ và luyện tập e-Sport để cân bằng. Tôi luôn tin sự kiên trì và tinh thần khám phá là chìa khóa giúp mình tiến bộ từng ngày.</p>
       `
     }
   },
@@ -46,20 +48,20 @@ export const PERSONA_CONFIG = {
     theme: "dark",
     prompt: "Bạn muốn về lại nhân cách cũ chứ ?",
     hero: {
-      frontSrc: "imgs/nor.jpg",
+      frontSrc: "imgs/maika.jpg",
       frontAlt: "Ảnh đại diện — Nor",
       backSrc: null,
       backAlt: ""
     },
     profile: {
-      photo: "imgs/maika.jpg",
+      photo: "imgs/mika2.png",
       alt: "Ảnh chân dung — Nor",
-      dob: "—",
-      hometown: "Sống tại Bình Dương",
+      dob: "02/09/2003",
+      hometown: "Thái Bình cũ (bây giờ là Hưng Yên)",
       bio: `
-        <p>Nor là phiên bản giàu cảm hứng hơn của tôi: thích trải nghiệm mới, mê những chuyển động nhỏ và thường xuyên thử nghiệm hàng loạt prototype trước khi chọn hướng đi cuối cùng. Nor xem mỗi dự án cá nhân như một sân chơi để kiểm tra ý tưởng lạ.</p>
-        <p>Gần đây, Nor tập trung nghiên cứu animation với GSAP, tối ưu hiệu năng bằng Vite và viết lại design system nhỏ để các phần tử trên trang chuyển trạng thái mượt mà. Nếu ban ngày là thời gian cho các môn học trên lớp, thì buổi tối chính là lúc Nor cắm trại cùng Figma, VS Code và playlist Lo-fi.</p>
-        <p>Khi cảm thấy bí ý tưởng, Nor sẽ rủ bạn bè cùng bàn về chuyện nghề, đi cà phê hoặc chơi game vài ván để nạp lại năng lượng. Nhờ vậy, mỗi phiên bản của Nor đều khác biệt và không ngừng phát triển.</p>
+        <p>Nor một cá tính đầy sự mông mơ với cái tôi và ước vọng lớn, một cá tính với sự chỉnh chu và chủ nghĩa hoàn hảo. Đây là mặt khác trên không gian mạng nơi mà tôi có thể thể hiện cái tôi một cách phóng túng nhất</p>
+        <p>Khả năng học hỏi siêu phàm khiến với chủ nghĩa hoàn hảo khiến cho tôi chinh phục được tất cả mục tiêu đề ra. Các ví dụ điển hình: có video trên tiktok hơn 1 triệu view, phá đảo tất cả các tựa game mình chơi, từng có thứ hạng cao trong thi đấu quốc nội game fps (top 5 đội tuyển mạnh nhất tựa game Rules of Survival)</p>
+        <p><strong>"Không ngừng phát triển, không gì là không thể chinh phục"</strong> - đây là châm ngôn của tôi</p>
       `
     }
   }
