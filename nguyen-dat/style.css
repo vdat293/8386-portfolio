@@ -2872,27 +2872,6 @@ textarea {
   animation: fadeInUpSmooth 0.6s ease-out both;
 }
 
-/* Social cards stagger */
-.social-links .social-card:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.social-links .social-card:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.social-links .social-card:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.social-links .social-card:nth-child(4) {
-  animation-delay: 0.3s;
-}
-
-.scroll-animate.is-visible .social-links .social-card {
-  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-
 /* Micro-interactions for navigation */
 .nav-link {
   position: relative;
