@@ -1,61 +1,129 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lục Tấn Tài - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CV - Lục Tấn Tài | Sinh viên CNTT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+  :root{--blur:18px;--glass-bg:rgba(255,255,255,.10);--glass-brd:rgba(255,255,255,.22);--chip:rgba(255,255,255,.75)}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#fff;background:#0b1020 url("about.jpg") center/cover fixed no-repeat;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;background:rgba(5,10,25,.7);z-index:-3}
+  .topbar{position:fixed;inset:20px 20px auto 20px;display:flex;gap:12px;z-index:5;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--glass-brd);background:var(--glass-bg);backdrop-filter:blur(var(--blur));border-radius:999px;color:#fff;text-decoration:none;font-weight:600;cursor:pointer;transition:transform .15s ease,background .2s ease,border-color .2s ease}
+  .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.35)}
+  .container{max-width:1100px;margin:120px auto;padding:20px}
+  .cv{display:grid;grid-template-columns:340px 1fr;gap:26px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.05));border:1px solid var(--glass-brd);border-radius:28px;padding:28px;backdrop-filter:blur(var(--blur));box-shadow:0 20px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12)}
+  @media (max-width:860px){.cv{grid-template-columns:1fr;padding:22px}.container{margin:96px 12px}}
+  .aside{display:flex;flex-direction:column;gap:18px}
+  .avatar{position:relative;width:80%;aspect-ratio:1/1;border-radius:24px;overflow:hidden;border:1px solid var(--glass-brd);box-shadow:0 12px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.1)}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .name{font-size:clamp(24px,2.4vw,34px);font-weight:800;line-height:1.15}
+  .role{color:var(--chip);font-weight:600}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;width:max-content;border:1px dashed rgba(255,255,255,.35);border-radius:12px;background:rgba(255,255,255,.08)}
+  .meta{display:grid;gap:8px;margin-top:4px;color:#e5faff}
+  .meta a{color:#e5faff;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,.25)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chip{padding:6px 10px;background:rgba(255,255,255,.14);border:1px solid var(--glass-brd);border-radius:999px;font-size:12px;font-weight:600}
+  .social{display:flex;gap:14px;margin-top:12px}
+  .icon-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.15);border:1px solid var(--glass-brd);color:#fff;text-decoration:none;font-size:20px;transition:transform .15s ease,background .2s ease}
+  .icon-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.25)}
+  .content{display:grid;gap:18px}
+  .section{background:rgba(255,255,255,.07);border:1px solid var(--glass-brd);border-radius:18px;padding:18px}
+  .section h3{margin:0 0 12px;font-size:18px;letter-spacing:.3px;color:#dff8ff;text-transform:uppercase}
+  .section p{margin:0 0 8px;color:#f0fbff}
+  .list{margin:0;padding-left:18px;color:#f0fbff}
+  .list li{margin:6px 0}
+  .footnote{margin-top:6px;font-size:12px;color:#d2f7ff;opacity:.9}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .gitem{background:rgba(255,255,255,.08);border:1px solid var(--glass-brd);border-radius:16px;padding:10px;display:flex;align-items:center;justify-content:center}
+  .gimg{width:100%;aspect-ratio:4/3;border-radius:10px;object-fit:cover;display:block}
+  @media (max-width:620px){.gallery{grid-template-columns:1fr}}
+  @media print{body{background:#fff;color:#000}body::before,.topbar{display:none!important}.container{margin:0;padding:0}.cv{box-shadow:none;border:1px solid #ddd;background:#fff;color:#000;-webkit-print-color-adjust:exact;print-color-adjust:exact}.section{background:#fff;border-color:#ddd}a{color:#000;text-decoration:underline}}
+  </style>
 </head>
-
 <body>
-    <header>
-        <h1>Lục Tấn Tài</h1>
-    </header>
-
-    <main>
-        <section class="info">
-            <img src="about.jpg" alt="Lục Tấn Tài" width="200">
-            <p><strong><i class="fa-solid fa-house"></i> Quê quán:</strong> TP. Hồ Chí Minh</p>
-            <p><strong><i class="fa-brands fa-facebook"></i> Mạng xã hội:</strong>
-                <a href="https://www.facebook.com/share/17EhJDKxwP/?mibextid=wwXIfr" target="_blank">Facebook</a>
-            </p>
+  <nav class="topbar" aria-label="Điều hướng">
+    <a class="btn" href="../index.html"><i class="fa-solid fa-arrow-left"></i> Trở về</a>
+    <button class="btn" id="btnPrint"><i class="fa-solid fa-file-arrow-down"></i> Tải CV</button>
+  </nav>
+  <main class="container">
+    <article class="cv" role="document" aria-label="CV của Lục Tấn Tài">
+      <aside class="aside">
+        <figure class="avatar">
+          <img src="avt.png" alt="Lục Tấn Tài">
+        </figure>
+        <div>
+          <div class="badge"><i class="fa-solid fa-graduation-cap"></i> Sinh viên CNTT</div>
+          <h1 class="name">Lục Tấn Tài</h1>
+          <div class="role">Đại học Bình Dương • Công nghệ Thông tin</div>
+          <div class="meta">
+            <div><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh, Việt Nam</div>
+            <div><i class="fa-solid fa-envelope"></i> <a href="mailto:luctantai@example.com">luctantai@example.com</a></div>
+            <div><i class="fa-solid fa-phone"></i> <a href="tel:+84888888888">+84 888 888 888</a></div>
+          </div>
+          <div class="chips">
+            <span class="chip">HTML/CSS/JS</span>
+            <span class="chip">C/C++</span>
+            <span class="chip">Java</span>
+            <span class="chip">SQL</span>
+          </div>
+          <div class="social" aria-label="Mạng xã hội">
+            <a class="icon-btn" href="https://www.facebook.com/share/17EhJDKxwP/?mibextid=wwXIfr" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="icon-btn" href="https://github.com" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+            <a class="icon-btn" href="mailto:luctantai@example.com"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+      </aside>
+      <section class="content">
+        <section class="section">
+          <h3>Giới thiệu</h3>
+          <p>Mình là <strong>Lục Tấn Tài</strong>, sinh viên ngành CNTT tại Đại học Bình Dương. Mục tiêu là trở thành Frontend Developer vững nền tảng, xây dựng sản phẩm thực tế và mang lại trải nghiệm người dùng tốt.</p>
         </section>
-
-        <section class="skills">
-            <h2><i class="fa-solid fa-heart"></i> Sở thích</h2>
-            <ul>
-                <li>Lập trình</li>
-                <li>Bóng đá</li>
-                <li>Nghe nhạc</li>
-                <li>Đọc sách</li>
-            </ul>
+        <section class="section">
+          <h3>Kỹ năng</h3>
+          <ul class="list">
+            <li>Web: HTML5, CSS3 (Flex/Grid), JavaScript ES6+, Responsive Design.</li>
+            <li>Lập trình: C/C++, Java, tư duy OOP, cấu trúc dữ liệu.</li>
+            <li>CSDL: MySQL, SQL Server.</li>
+            <li>Công cụ: Git/GitHub, VS Code, Figma.</li>
+          </ul>
         </section>
-
-        <section class="projects">
-            <h2><i class="fa-solid fa-diagram-project"></i> Dự án đã làm</h2>
-            <ul>
-                <li>Website bán cà phê</li>
-                <li>Portfolio cá nhân</li>
-            </ul>
+        <section class="section">
+          <h3>Học vấn</h3>
+          <p><strong>Đại học Bình Dương</strong> – Công nghệ Thông tin (2023 – nay)</p>
+          <ul class="list">
+            <li>Môn trọng tâm: Lập trình Web, Cơ sở dữ liệu, Mạng máy tính, Hệ điều hành.</li>
+            <li>Hoạt động: Thành viên CLB Lập trình, hỗ trợ sự kiện công nghệ của khoa.</li>
+          </ul>
         </section>
-
-        <section class="skills">
-            <h2><i class="fa-solid fa-code"></i> Chuyên môn</h2>
-            <p>C++</p>
+        <section class="section">
+          <h3>Dự án / Hoạt động</h3>
+          <ul class="list">
+            <li><strong>Portfolio cá nhân</strong> – Thiết kế UI hiện đại, tối ưu SEO cơ bản.</li>
+            <li><strong>Ứng dụng quản lý công việc</strong> – To-do list dùng LocalStorage, lọc linh hoạt.</li>
+            <li><strong>Tình nguyện</strong> – Phối hợp truyền thông sự kiện sinh viên.</li>
+          </ul>
         </section>
-
-        <section class="cv-download">
-            <a href="../assets/cv/luctantai_cv_pdf.pdf" download>
-                <i class="fa-solid fa-file-arrow-down"></i> Tải CV tại đây
-            </a>
+        <section class="section">
+          <h3>Bộ sưu tập</h3>
+          <div class="gallery">
+            <div class="gitem"><img class="gimg" src="about.jpg" alt="Dự án cá nhân 1"></div>
+            <div class="gitem"><img class="gimg" src="avt.png" alt="Dự án cá nhân 2"></div>
+            <div class="gitem"><img class="gimg" src="about.jpg" alt="Dự án cá nhân 3"></div>
+            <div class="gitem"><img class="gimg" src="avt.png" alt="Dự án cá nhân 4"></div>
+          </div>
+          <div class="footnote">* Hình ảnh sử dụng từ thư mục hiện có để minh họa cho các dự án tiêu biểu.</div>
         </section>
-    </main>
-
-    <footer>
-        <p>&copy; Lục Tấn Tài - 2025</p>
-    </footer>
+      </section>
+    </article>
+  </main>
+  <script>
+  document.getElementById('btnPrint').addEventListener('click',()=>window.print());
+  </script>
 </body>
-
 </html>
