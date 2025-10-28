@@ -77,6 +77,8 @@ nav {
     font-weight: bold;
     color: var(--primary-color);
     text-decoration: none;
+    z-index: 1001;
+    /* Đảm bảo logo luôn ở trên */
 }
 
 .nav-links {
@@ -97,6 +99,23 @@ nav {
 
 .nav-links a:hover {
     color: var(--primary-color);
+}
+
+/* --- NÚT HAMBURGER (MỚI) --- */
+.hamburger {
+    display: none;
+    /* Ẩn trên desktop */
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1001;
+    /* Phải cao hơn nav-links */
+}
+
+.hamburger i {
+    transition: transform 0.3s ease;
 }
 
 /* --- Phần Mở Đầu --- */
@@ -120,25 +139,70 @@ nav {
     font-weight: 400;
     color: var(--text-color);
     margin-bottom: 5px;
+
+    /* --- HIỆU ỨNG ĐÃ THÊM --- */
+    opacity: 0;
+    /* Bắt đầu ẩn */
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+    /* Tên, thời gian, easing, delay, giữ trạng thái cuối */
 }
 
 .intro-text h1 {
     font-size: 4rem;
     color: var(--primary-color);
     margin: 0;
-    line-height: 1.1;
+    line-height: 1.4;
+
+    /* --- HIỆU ỨNG GÕ CHỮ ĐÃ THÊM --- */
+    display: inline-block;
+    /* Quan trọng để width hoạt động */
+    overflow: hidden;
+    /* Ẩn chữ bị tràn */
+    white-space: nowrap;
+    /* Giữ trên 1 dòng */
+    border-right: 4px solid var(--primary-color);
+    /* Thêm lại border-right */
+    width: 0;
+    /* Bắt đầu với width = 0 */
+    opacity: 0;
+    /* Bắt đầu ẩn */
+
+    /* 1. fadeIn: Hiện khối h1 (chỉ opacity)
+      2. typing: Tăng width từ 0% -> 100% (16 bước là 16 ký tự "Trịnh Nhật Hoàng")
+      3. blink-caret: Hiệu ứng con trỏ nhấp nháy
+    */
+    animation:
+        fadeIn 0.1s ease 0.7s forwards,
+        typing 1.9s steps(18, end) 0.8s forwards,
+        blink-caret 0.5s step-end infinite 0.8s;
 }
 
 .intro-text h3 {
     font-size: 1.8rem;
     font-weight: 400;
     color: var(--heading-color);
-    margin-top: 15px;
+    margin-top: 5px;
+
+    /* --- HIỆU ỨNG ĐÃ THÊM --- */
+    opacity: 0;
+    animation: fadeInUp 1s ease 2.5s forwards;
+    /* Delay 2.2s (sau khi hiệu ứng gõ chữ xong) */
 }
 
 .intro-text p {
     margin: 25px 0 35px 0;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+
+    /* --- HIỆU ỨNG ĐÃ THÊM --- */
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 2.4s forwards;
+    /* Delay 2.4s (sau h3) */
+}
+
+/* --- HIỆU ỨNG ĐÃ THÊM (Cho ảnh) --- */
+.intro-image {
+    opacity: 0;
+    animation: fadeInUp 1.5s ease 3s forwards;
 }
 
 .intro-image img {
@@ -147,7 +211,7 @@ nav {
     border: 7px solid var(--primary-color);
     box-shadow: 0 10px 40px rgba(213, 210, 219, 0.25);
     --primary-color: #fd39e3;
-    /* Màu hồng đậm làm màu chủ đạo */
+    /* Dòng này bị thừa từ code gốc của bạn, nhưng tôi giữ nguyên */
 }
 
 
@@ -296,19 +360,20 @@ nav {
     margin-bottom: 10px;
 }
 
-/* --- Phần Kỹ Năng (My Skills) --- */
 #skills {
     background-color: #FDECF2;
     /* Nền hồng rất nhạt cho phần skills */
 }
 
-.skills-container {
+/* Container 2 cột mới */
+.skills-content-wrapper {
     display: flex;
     justify-content: space-around;
     gap: 40px;
     margin-top: 40px;
 }
 
+/* Tái sử dụng .skill-category cho box trắng */
 .skill-category {
     background-color: var(--surface-color);
     padding: 30px;
@@ -317,35 +382,228 @@ nav {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.skill-item {
-    background-color: #f0f0f0;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+.skill-category h3 {
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* --- Cột Chuyên môn --- */
+#skills-specialty .specialty-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+#skills-specialty .specialty-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-top: 5px;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+}
+
+#skills-specialty .specialty-text h4 {
+    font-size: 1.2rem;
+    color: var(--heading-color);
+    margin-bottom: 5px;
+}
+
+#skills-specialty .specialty-text p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* --- Cột Thanh kỹ năng --- */
+.skill-bar-item {
+    margin-bottom: 20px;
+}
+
+.skill-bar-item:last-child {
+    margin-bottom: 0;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.skill-info h4 {
+    margin: 0;
     font-size: 1.1rem;
+    font-weight: 500;
     display: flex;
     align-items: center;
-    transition: background-color 0.3s, color 0.3s;
+    gap: 10px;
 }
 
-.skill-item:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.skill-item i {
-    margin-right: 15px;
+.skill-info h4 i {
     width: 20px;
     text-align: center;
-    color: var(--secondary-color);
-    transition: color 0.3s;
 }
 
-.skill-item:hover i {
-    color: white;
+.skill-info span {
+    font-weight: 600;
+    color: var(--heading-color);
+    font-size: 1rem;
 }
 
-/* --- Phần Liên Hệ (Contact) --- */
+.progress-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 5px;
+    /* Width và background-color được set inline trong HTML */
+
+    /* Thêm hiệu ứng animation khi tải trang */
+    transform: translateX(-101%);
+    /* Ẩn thanh đi 1 chút */
+    animation: slideInBar 1s ease-out 0.5s forwards;
+}
+
+/* =====================================================
+--- PHẦN PROJECTS (MỚI THÊM) ---
+===================================================== */
+#projects {
+    background-color: var(--background-color);
+    /* Nền giống body */
+}
+
+/* Lưới responsive cho các card */
+.projects-grid {
+    display: grid;
+    /* Dùng grid để tạo cột tự động */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* - Tự động điều chỉnh số cột
+      - Cột nhỏ nhất là 300px
+      - Cột lớn nhất là 1fr (chia đều không gian)
+    */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background-color: var(--surface-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    /* Để bo góc cho ảnh */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(71, 37, 221, 0.1);
+}
+
+.project-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    /* Giữ tỷ lệ ảnh 16:10 */
+    overflow: hidden;
+}
+
+.project-image-1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-image-2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Đảm bảo ảnh lấp đầy khung */
+    transition: transform 0.4s ease;
+}
+
+.project-image-3 {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+    /* Hiệu ứng zoom ảnh khi hover */
+}
+
+.project-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* Giúp các card cao bằng nhau */
+}
+
+.project-content h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.project-tags span {
+    background-color: #FDECF2;
+    /* Màu nền hồng nhạt của #skills */
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 15px;
+}
+
+.project-links {
+    display: flex;
+    gap: 20px;
+    margin-top: auto;
+    /* Đẩy links xuống đáy card */
+}
+
+.project-links a {
+    text-decoration: none;
+    color: var(--heading-color);
+    font-weight: 500;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+    color: var(--primary-color);
+}
+
+/* =====================================================
+--- HẾT PHẦN CSS PROJECTS MỚI ---
+===================================================== */
+
 /* --- Phần Liên Hệ (Contact) --- */
 #contact {
     background-color: var(--background-color);
@@ -430,58 +688,6 @@ footer {
     color: #666;
 }
 
-/* --- Responsive cho màn hình nhỏ --- */
-@media (max-width: 768px) {
-    section {
-        padding: 60px 5%;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .intro-content,
-    .about-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .intro-image {
-        margin-top: 30px;
-    }
-
-    .intro-image img {
-        max-width: 250px;
-    }
-
-    .about-container {
-        flex-direction: column-reverse;
-    }
-
-    .about-carousel {
-        max-width: 340px;
-        gap: 14px;
-    }
-
-    .carousel-window {
-        aspect-ratio: 1 / 1;
-    }
-
-    .carousel-btn {
-        width: 36px;
-        height: 36px;
-    }
-
-    .carousel-dot {
-        width: 10px;
-        height: 10px;
-    }
-
-    .skills-container {
-        flex-direction: column;
-    }
-}
-
 /* --- Phần Download CV --- */
 #cv-download {
     padding: 50px 10%;
@@ -511,4 +717,530 @@ footer {
 
 .btn-cv i {
     margin-right: 10px;
+}
+
+
+/* --- KEYFRAMES CHO HIỆU ỨNG (GIỮ NGUYÊN) --- */
+
+/* Keyframe cho hiệu ứng 'hiện dần lên' (fade in + trượt lên) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframe chỉ để 'hiện' (fade in) */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Keyframe cho hiệu ứng 'gõ chữ' (thay đổi chiều rộng) */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* Keyframe cho 'con trỏ nhấp nháy' */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--primary-color);
+    }
+}
+
+/* Keyframe cho thanh kỹ năng trượt vào (MỚI) */
+@keyframes slideInBar {
+    from {
+        transform: translateX(-101%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+
+
+/* --- Tablet & Mobile (Cỡ 1024px trở xuống) --- */
+@media (max-width: 1024px) {
+
+    header,
+    section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    /* --- Cấu hình Menu Mobile --- */
+    .hamburger {
+        display: block;
+        /* Hiện nút hamburger */
+    }
+
+    .nav-links {
+        /* Biến thành menu full màn hình */
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Bắt đầu ẩn bên phải */
+        width: 70%;
+        /* Chiếm 70% màn hình */
+        max-width: 300px;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        transition: right 0.4s ease-in-out;
+        z-index: 1000;
+        border-left: 1px solid var(--border-color);
+    }
+
+    .nav-links.active {
+        right: 0;
+        /* Trượt vào khi active */
+    }
+
+    .nav-links li {
+        margin-left: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.4rem;
+        /* Chữ to hơn cho dễ bấm */
+    }
+
+    /* --- Bố cục cho Tablet --- */
+    .intro-content,
+    .about-container {
+        flex-direction: column;
+        /* Xếp chồng lên nhau */
+        text-align: center;
+    }
+
+    .intro-image {
+        margin-top: 30px;
+    }
+
+    .intro-text h1 {
+        /* Ngăn hiệu ứng gõ chữ bị vỡ dòng */
+        white-space: normal;
+        border-right: none;
+        width: auto;
+        animation: fadeInUp 0.8s ease 0.7s forwards;
+        /* Thay hiệu ứng gõ chữ bằng fadeup */
+        opacity: 0;
+    }
+
+    .intro-text h4,
+    .intro-text h3,
+    .intro-text p,
+    .intro-image {
+        /* Reset animation delay cho đồng bộ */
+        animation-delay: 0.2s;
+    }
+
+    .intro-text h1 {
+        animation-delay: 0.4s;
+    }
+
+    .intro-text h3 {
+        animation-delay: 0.6s;
+    }
+
+    .intro-text p {
+        animation-delay: 0.8s;
+    }
+
+    .intro-image {
+        animation-delay: 1.0s;
+    }
+
+
+    .about-container {
+        /* Đảo ngược thứ tự cho dễ đọc: text -> image */
+        flex-direction: column-reverse;
+    }
+
+    .about-carousel {
+        max-width: 400px;
+        /* Carousel to hơn 1 chút trên tablet */
+    }
+
+    .carousel-window {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 2rem;
+        /* Giảm cỡ chữ H2 */
+    }
+
+    /* --- Responsive cho Skills (MỚI) --- */
+    .skills-content-wrapper {
+        flex-direction: column;
+        /* Xếp chồng 2 cột */
+    }
+
+    .skill-category h3 {
+        text-align: center;
+        /* Căn giữa lại tiêu đề h3 trên mobile */
+    }
+}
+
+/* --- Mobile (Cỡ 768px trở xuống) --- */
+@media (max-width: 768px) {
+    /* Các styles ở (max-width: 1024px) đã được áp dụng */
+    /* Chúng ta chỉ cần tinh chỉnh thêm cho màn hình nhỏ hơn */
+
+    .intro-text h1 {
+        font-size: 2.8rem;
+        /* Giảm cỡ chữ h1 cho điện thoại */
+    }
+
+    .intro-text h3 {
+        font-size: 1.5rem;
+        /* Giảm cỡ chữ h3 */
+    }
+
+    .intro-image img {
+        max-width: 250px;
+        /* Ảnh nhỏ hơn trên điện thoại */
+    }
+
+    .about-carousel {
+        max-width: 340px;
+        /* Thu nhỏ lại carousel */
+        gap: 14px;
+    }
+
+    .carousel-window {
+        aspect-ratio: 1 / 1;
+        /* Ảnh vuông cho dễ nhìn */
+    }
+
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* XÓA STYLE CŨ CỦA SKILLS */
+    /* .skills-container { flex-direction: column; } */
+
+    .nav-links {
+        width: 80%;
+        /* Menu mobile chiếm 80% */
+    }
+
+    .contact-info {
+        flex-direction: column;
+        /* Xếp chồng email và sđt */
+        gap: 20px;
+        align-items: center;
+    }
+}
+
+/* =====================================================
+--- BỔ SUNG HIỆU ỨNG SINH ĐỘNG (THIẾT KẾ WEB) ---
+===================================================== */
+
+/* 1. Hiệu ứng "nổi bồng bềnh" cho ảnh đại diện */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Áp dụng hiệu ứng 'float' sau khi ảnh đã 'fadeInUp' */
+.intro-image {
+    /* Thêm hiệu ứng 'float' vào sau hiệu ứng 'fadeInUp' gốc của bạn */
+    animation:
+        fadeInUp 1.5s ease 3s forwards,
+        float 4s ease-in-out 3.5s infinite;
+    /* Bắt đầu 'float' sau 3.5s */
+}
+
+/* 2. Hiệu ứng gạch chân (grow) cho link điều hướng */
+.nav-links a {
+    position: relative;
+    /* Cần để ::after hoạt động */
+    padding-bottom: 5px;
+    /* Thêm chút không gian cho gạch chân */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    /* Bắt đầu từ giữa */
+    transform: translateX(-50%);
+    /* Căn giữa */
+    width: 0;
+    /* Bắt đầu không có chiều rộng */
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    /* Bung gạch chân ra 100% khi hover */
+}
+
+/* 3. Hiệu ứng "xuất hiện" (FadeIn) cho các Section khi tải trang */
+/* Làm cho các phần còn lại cũng có hiệu ứng xuất hiện
+   giống như phần Intro, tạo sự đồng bộ khi tải trang
+*/
+section:not(#intro) h2,
+.about-carousel,
+.about-text,
+.skill-category,
+.projects-grid,
+.contact-container,
+#cv-download .btn-cv {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+}
+
+/* Tinh chỉnh delay để các mục xuất hiện so le một chút */
+.about-text {
+    animation-delay: 0.5s;
+}
+
+/* Cho 2 cột skills xuất hiện so le */
+#skills-specialty {
+    animation-delay: 0.4s;
+}
+
+#skills-programming {
+    animation-delay: 0.6s;
+}
+
+.projects-grid {
+    animation-delay: 0.4s;
+}
+
+.contact-container {
+    animation-delay: 0.4s;
+}
+
+#cv-download .btn-cv {
+    animation-delay: 0.6s;
+}
+
+
+/* 4. Hiệu ứng "nảy" cho icon chuyên môn ở Skills */
+#skills-specialty .specialty-item i {
+    transition: transform 0.3s ease;
+}
+
+#skills-specialty .specialty-item:hover i {
+    transform: scale(1.15) rotate(-5deg);
+    /* Phóng to và xoay nhẹ */
+}
+
+/* 5. Thêm hiệu ứng "viền sáng" cho Project Card khi hover */
+.project-card {
+    /* Thêm 'box-shadow' vào transition có sẵn của bạn */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    /* Giữ nguyên hiệu ứng 'translateY' và 'box-shadow' cũ của bạn
+      và thêm một lớp shadow nữa (0 0 0 3px) để tạo viền
+    */
+    transform: translateY(-8px);
+    box-shadow:
+        0 10px 25px rgba(71, 37, 221, 0.1),
+        /* Shadow cũ */
+        0 0 0 3px var(--primary-color);
+    /* Viền sáng mới */
+}
+
+/* 6. Hiệu ứng "nảy" (overshoot) cho các icon Contact & Social */
+.contact-item {
+    /* Thay đổi 'transition-timing-function' từ 'ease' (mặc định)
+      thành 'cubic-bezier' để tạo hiệu ứng nảy lên
+    */
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* (Không cần thêm .contact-item:hover vì bạn đã có sẵn) */
+
+
+
+
+
+
+/* =====================================================
+--- HIỆU ỨNG HOA ANH ĐÀO RƠI (THIẾT KẾ WEB) ---
+===================================================== */
+
+/* Chúng ta sẽ dùng ký tự '🌸' cho đơn giản và đẹp.
+  Bạn cũng có thể thay bằng '❀' hoặc '❁'.
+*/
+.petal {
+    position: fixed;
+    /* Bắt đầu rơi từ phía trên màn hình */
+    top: -30px;
+
+    /* Các biến CSS này sẽ được JS điều khiển */
+    font-size: var(--petal-size, 20px);
+
+    /* Chúng ta dùng filter để tạo 2 màu hoa khác nhau (hồng & trắng)
+      và độ mờ (opacity) để tạo chiều sâu
+    */
+    filter:
+        opacity(var(--petal-opacity, 0.8)) hue-rotate(var(--petal-hue, 0deg));
+
+    color: #FFB7C5;
+    /* Màu hồng nhạt cơ bản */
+
+    /* Quan trọng: Để người dùng click "xuyên" qua cánh hoa */
+    pointer-events: none;
+
+    /* Luôn nằm trên cùng */
+    z-index: 9999;
+
+    /* animation: [tên keyframe] [thời gian] [easing] [delay] [trạng thái cuối]
+      - fall: Chuyển động rơi (Y)
+      - sway: Chuyển động lắc lư (X và xoay)
+    */
+    animation:
+        fall var(--fall-duration, 10s) linear var(--fall-delay, 0s) forwards,
+        sway var(--sway-duration, 4s) ease-in-out var(--fall-delay, 0s) infinite;
+}
+
+/* Keyframe cho hoa RƠI (chuyển động dọc) */
+@keyframes fall {
+    from {
+        transform: translateY(0vh);
+    }
+
+    to {
+        /* Rơi qua khỏi đáy màn hình 10vh */
+        transform: translateY(110vh);
+    }
+}
+
+/* Keyframe cho hoa LẮC LƯ (chuyển động ngang + xoay) */
+@keyframes sway {
+    0% {
+        transform: translateX(0px) rotate(0deg);
+    }
+
+    50% {
+        /* 'var(--sway-amount)' sẽ được JS đặt ngẫu nhiên */
+        transform: translateX(var(--sway-amount, 40px)) rotate(180deg);
+    }
+
+    100% {
+        transform: translateX(0px) rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+--- STYLES CHO PHẦN BẰNG KHEN (AWARDS) ---
+===================================================== */
+
+/* Phần #awards sẽ tự động nhận các kiểu chung của 'section' 
+  (như padding, scroll-margin-top) đã được định nghĩa ở đầu tệp style.css
+*/
+
+#awards h2 {
+    text-align: center; /* Căn giữa tiêu đề */
+    font-size: 2.5rem; /* Làm cho tiêu đề to rõ */
+    color: var(--heading-color);
+    margin-bottom: 40px; /* Khoảng cách với nội dung bên dưới */
+}
+
+.awards-container {
+    display: flex;
+    flex-wrap: wrap; /* Tự động xuống hàng trên màn hình nhỏ */
+    justify-content: center; /* Căn giữa các card bằng khen */
+    gap: 30px; /* Khoảng cách giữa các card */
+}
+
+.certificate-card {
+    background-color: var(--surface-color); /* Nền trắng cho card */
+    border: 1px solid var(--border-color); /* Viền hồng nhạt từ biến màu của bạn */
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ */
+    width: 650px; /* Chiều rộng cố định, bạn có thể thay đổi */
+    max-width: 100%; /* Đảm bảo responsive */
+    overflow: hidden; /* Giúp bo góc cho ảnh bên trong */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px); /* Hiệu ứng nhấc lên khi di chuột */
+    box-shadow: 0 8px 20px rgba(71, 37, 221, 0.1); /* Đổ bóng rõ hơn khi hover */
+}
+
+.certificate-card img {
+    padding: 20px;
+    width: 100%;
+    height: auto; /* Giữ đúng tỷ lệ ảnh */
+    display: block;
+    border-bottom: 5px solid var(--border-color); /* Đường kẻ ngăn cách ảnh và nội dung */
+}
+
+.certificate-card h3 {
+    color: var(--primary-color); /* Sử dụng màu chủ đạo */
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.certificate-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.certificate-card p.date {
+    font-size: 0.9rem;
+    color: var(--secondary-color); /* Màu hồng nhạt */
+    margin-top: 15px;
+    font-style: italic;
 }

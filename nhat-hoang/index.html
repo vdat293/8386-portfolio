@@ -6,20 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Trịnh Nhật Hoàng</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">\
+    <link rel="stylesheet" href="">
 </head>
 
 <body>
 
     <header>
         <nav>
-            <a href="../index.html" class="logo">PORTFOLIO</a>
-            <ul class="nav-links">
+            <a href="#intro" class="logo">PORTFOLIO</a>
+
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#awards">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+
+            <button class="hamburger" id="hamburger-btn" aria-label="Mở menu" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </nav>
     </header>
 
@@ -82,79 +89,186 @@
                 </div>
                 <div class="about-text">
                     <h3>Xin chào! ^_^</h3>
+                    <p>Tôi là <strong>Trịnh Nhật Hoàng</strong></p>
+                    <p><strong>Sinh ngày:</strong>16/01/2005</p>
+                    <p><strong>Quê quán:</strong> Vĩnh Phúc</p>
                     <p>
-                        Tôi là <strong>Trịnh Nhật Hoàng</strong>, một sinh viên với niềm đam mê anime (thường bị gọi là
-                        wibu). Tôi luôn tò mò về mọi thứ mình chưa biết và có một tính cách khá "hướng tùm lum".
+                        Là một sinh viên Công nghệ Thông tin, tôi luôn tin rằng động lực lớn nhất để phát triển chính là
+                        sự tò mò. Tôi bị thu hút bởi những điều mình chưa biết, từ việc tìm hiểu một kiến trúc mạng phức
+                        tạp, gỡ một
+                        <br><br>
+                    <p>
+                        Tôi thường tự nhận mình có tính cách 'hướng tùm lum'. Đây là cách nói vui cho việc tôi có thể
+                        hoàn toàn tập trung 'cày' code, và <strong>chơi game</strong> hay <strong>xem phim</strong> là
+                        cách giúp tôi bớt căng hẳng sau hàng giờ viết code, nhưng cũng luôn sẵn sàng và hào hứng tham
+                        gia các hoạt động xã hội hay xách balo
+                        lên và đi phượt. Đối với tôi, sự tò mò chính là la bàn, dẫn dắt tôi khám phá cả thế giới công
+                        nghệ lẫn cuộc sống xung quanh.
                     </p>
-                    <ul>
-                        <li><strong>Quê quán:</strong> Vĩnh Phúc</li>
-                        <li><strong>Sở thích:</strong> Chơi game, lập trình, xem phim và đi phượt.</li>
-                        <li><strong>Chuyên môn:</strong> Computer Networks, Network Architecture.</li>
-                    </ul>
+                    </p>
+
                 </div>
             </div>
         </section>
 
         <section id="skills">
             <h2>My Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Ngôn ngữ & Công nghệ</h3>
-                    <div class="skill-item"><i class="fa-brands fa-html5"></i> HTML</div>
-                    <div class="skill-item"><i class="fa-brands fa-css3-alt"></i> CSS</div>
-                    <div class="skill-item"><i class="fa-brands fa-js"></i> JavaScript</div>
+            <div class="skills-content-wrapper">
+
+                <div class="skill-category" id="skills-specialty">
+                    <h3>Chuyên môn</h3>
+                    <div class="specialty-item">
+                        <i class="fa-solid fa-network-wired"></i>
+                        <div class="specialty-text">
+                            <h4>Computer Networks</h4>
+                            <p>Hiểu biết về mô hình OSI, TCP/IP, routing, switching.</p>
+                        </div>
+                    </div>
+                    <div class="specialty-item">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <div class="specialty-text">
+                            <h4>Network Architecture</h4>
+                            <p>Kiến thức về thiết kế và cấu trúc mạng.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Lập trình & Cơ sở dữ liệu</h3>
-                    <div class="skill-item"><i class="fa-solid fa-code"></i> C++</div>
-                    <div class="skill-item"><i class="fa-solid fa-code-branch"></i> C#</div>
-                    <div class="skill-item"><i class="fa-solid fa-database"></i> SQL</div>
+
+                <div class="skill-category" id="skills-programming">
+                    <h3>Lập trình & Ngôn ngữ</h3>
+
+                    <div class="skill-bar-item">
+                        <div class="skill-info">
+                            <h4><i class="fa-brands fa-js" style="color: #0a721b;"></i> JavaScript</h4>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 65%; background-color: #0a721b;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar-item">
+                        <div class="skill-info">
+                            <h4><i class="fa-solid fa-code" style="color: #128be7;"></i> C++</h4>
+                            <span>55%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 55%; background-color: #128be7;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar-item">
+                        <div class="skill-info">
+                            <h4><i class="fa-brands fa-css3-alt" style="color: #ec4646;"></i> CSS</h4>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 60%; background-color: #ec4646;"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-bar-item">
+                        <div class="skill-info">
+                            <h4><i class="fa-solid fa-code-branch" style="color: #1659e9;"></i> C#</h4>
+                            <span>50%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 50%; background-color: #bc0fe7;"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
-            <p>Các dự án của tôi sẽ được cập nhật ở đây sớm.</p>
-        </section>
+            <h2>My Projects</h2>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <a href="mailto:24050101@student.bdu.edu.vn" class="contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>24050101@student.bdu.edu.vn</span>
-                    </a>
-                    <a href="https://zalo.me/0394940995" class="contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>0384 940 995</span>
-                    </a>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img class="project-image-1" src="Ảnh dự án 1.png" alt="Ảnh dự án 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Tạo lời chúc 20/10</h3>
+                        <p>Một ứng dụng web cho phép người dùng tạo và gửi lời chúc 20/10 đến bạn bè, người yêu.</p>
+                    </div>
+
                 </div>
 
-                <div class="social-links">
-                    <a href="https://www.tiktok.com/@trinhnhathoang0" target="_blank" class="contact-item">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-                    <a href="https://www.youtube.com/feed/you" target="_blank" class="contact-item">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-                    <a href="https://github.com/TrinhHoang05" target="_blank" class="contact-item">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://www.facebook.com/trinh.hoang.665647" target="_blank" class="contact-item">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img class="project-image-2" src="2.jpg" alt="Ảnh dự án Portfolio cá nhân">
+                    </div>
+                    <div class="project-content">
+                        <h3>Portfolio Cá Nhân (Trang này)</h3>
+                        <p>Trang web portfolio cá nhân bạn đang xem. Được xây dựng từ đầu với HTML, CSS và JavaScript để
+                            giới thiệu kỹ năng và các dự án của tôi.</p>
+
+
+                    </div>
                 </div>
+
+                <div class="project-card">
+                    <img class="project-image-3" src="Ảnh dự án 3.png" alt="Ảnh dự án 3">
+                    <div class="project-content">
+                        <h3>quản lý Bán Đồ Ăn Nhanh</h3>
+                        <p>Một ứng dụng cho phép người dùng xem thông tin hóa đơn, nguyên liệu và quản lý đơn hàng.</p>
+                    </div>
+                </div>
+
             </div>
-        </section>
+            <section id="awards">
+                <h2>Certificates</h2>
+                <div class="awards-container">
+
+                    <div class="certificate-card">
+                        <img src="bang khen.jpg" alt="Bằng khen sinh viên Trịnh Nhật Hoàng">
+
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <a href="mailto:24050101@student.bdu.edu.vn" class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>24050101@student.bdu.edu.vn</span>
+                        </a>
+                        <a href="https://zalo.me/0394940995" class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>0384 940 995</span>
+                        </a>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@trinhnhathoang0" target="_blank" class="contact-item">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.youtube.com/feed/you" target="_blank" class="contact-item">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://github.com/TrinhHoang05" target="_blank" class="contact-item">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://www.facebook.com/trinh.hoang.665647" target="_blank" class="contact-item">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
     </main>
+
 
     <section id="cv-download">
         <a href="your-cv.pdf" class="btn-cv" download>
             <i class="fa-solid fa-download"></i>
             Download CV
         </a>
+
     </section>
     <footer>
         <p>&copy; 2025, Trịnh Nhật Hoàng. All Rights Reserved.</p>
@@ -162,65 +276,106 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // --- CODE CAROUSEL (GIỮ NGUYÊN) ---
             const carousel = document.querySelector('.about-carousel');
-            if (!carousel) return;
+            if (carousel) {
+                const track = carousel.querySelector('.carousel-track');
+                const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+                const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+                const prevBtn = carousel.querySelector('.carousel-btn.prev');
+                const nextBtn = carousel.querySelector('.carousel-btn.next');
+                let currentIndex = 0;
 
-            const track = carousel.querySelector('.carousel-track');
-            const slides = Array.from(track.querySelectorAll('.carousel-slide'));
-            const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
-            const prevBtn = carousel.querySelector('.carousel-btn.prev');
-            const nextBtn = carousel.querySelector('.carousel-btn.next');
-            let currentIndex = 0;
+                const updateCarousel = (index) => {
+                    track.style.transform = `translateX(-${index * 100}%)`;
+                    dots.forEach((dot, dotIndex) => {
+                        const isActive = dotIndex === index;
+                        dot.classList.toggle('active', isActive);
+                        if (isActive) {
+                            dot.setAttribute('aria-current', 'true');
+                        } else {
+                            dot.removeAttribute('aria-current');
+                        }
+                    });
+                };
 
-            const updateCarousel = (index) => {
-                track.style.transform = `translateX(-${index * 100}%)`;
-                dots.forEach((dot, dotIndex) => {
-                    const isActive = dotIndex === index;
-                    dot.classList.toggle('active', isActive);
-                    if (isActive) {
-                        dot.setAttribute('aria-current', 'true');
-                    } else {
-                        dot.removeAttribute('aria-current');
-                    }
-                });
-            };
+                const goToSlide = (index) => {
+                    currentIndex = (index + slides.length) % slides.length;
+                    updateCarousel(currentIndex);
+                };
 
-            const goToSlide = (index) => {
-                currentIndex = (index + slides.length) % slides.length;
-                updateCarousel(currentIndex);
-            };
-
-            prevBtn?.addEventListener('click', () => {
-                goToSlide(currentIndex - 1);
-            });
-
-            nextBtn?.addEventListener('click', () => {
-                goToSlide(currentIndex + 1);
-            });
-
-            dots.forEach((dot) => {
-                dot.addEventListener('click', () => {
-                    const targetIndex = Number(dot.dataset.slide);
-                    if (!Number.isNaN(targetIndex)) {
-                        goToSlide(targetIndex);
-                    }
-                });
-            });
-
-            carousel.addEventListener('keydown', (event) => {
-                if (event.key === 'ArrowLeft') {
-                    event.preventDefault();
+                prevBtn?.addEventListener('click', () => {
                     goToSlide(currentIndex - 1);
-                }
-                if (event.key === 'ArrowRight') {
-                    event.preventDefault();
-                    goToSlide(currentIndex + 1);
-                }
-            });
+                });
 
-            updateCarousel(currentIndex);
-        });
+                nextBtn?.addEventListener('click', () => {
+                    goToSlide(currentIndex + 1);
+                });
+
+                dots.forEach((dot) => {
+                    dot.addEventListener('click', () => {
+                        const targetIndex = Number(dot.dataset.slide);
+                        if (!Number.isNaN(targetIndex)) {
+                            goToSlide(targetIndex);
+                        }
+                    });
+                });
+
+                carousel.addEventListener('keydown', (event) => {
+                    if (event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        goToSlide(currentIndex - 1);
+                    }
+                    if (event.key === 'ArrowRight') {
+                        event.preventDefault();
+                        goToSlide(currentIndex + 1);
+                    }
+                });
+
+                updateCarousel(currentIndex);
+            }
+
+            // --- CODE HAMBURGER MENU (GIỮ NGUYÊN) ---
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            if (hamburgerBtn && navLinks) {
+                hamburgerBtn.addEventListener('click', () => {
+                    const isExpanded = navLinks.classList.toggle('active');
+                    hamburgerBtn.setAttribute('aria-expanded', isExpanded);
+
+                    // Thay đổi icon (bars <-> times)
+                    const icon = hamburgerBtn.querySelector('i');
+                    if (isExpanded) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                        hamburgerBtn.setAttribute('aria-label', 'Đóng menu');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        hamburgerBtn.setAttribute('aria-label', 'Mở menu');
+                    }
+                });
+
+                // Tự động đóng menu khi click vào 1 link (trên mobile/tablet)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Chỉ đóng nếu menu đang mở (ở chế độ mobile/tablet)
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            hamburgerBtn.setAttribute('aria-expanded', 'false');
+                            const icon = hamburgerBtn.querySelector('i');
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                            hamburgerBtn.setAttribute('aria-label', 'Mở menu');
+                        }
+                    });
+                });
+            }
+        }); // <-- Dòng đóng của 'DOMContentLoaded'
     </script>
+
 </body>
 
 </html>
