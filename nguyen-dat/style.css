@@ -1827,7 +1827,8 @@ body.no-scroll {
 
 .achievement-card {
   --achievement-peek: 4rem;
-  width: clamp(220px, 28vw, 260px);
+  width: 100%;
+  max-width: 280px;
   height: auto;
   min-height: 300px;
   aspect-ratio: 13 / 15;
@@ -1933,6 +1934,17 @@ body.no-scroll {
   transform: translateY(0);
 }
 
+.achievement-view a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.achievement-view a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 900px) {
   .achievement-grid {
     max-width: 100%;
@@ -2033,7 +2045,9 @@ body.dark .skills-list {
 }
 
 body.dark .achievement-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
 }
 
 @keyframes fade-slide-down {
