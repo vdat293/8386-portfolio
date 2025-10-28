@@ -14,6 +14,10 @@ export const HERO_FLIP_CONFIG = {
   INITIAL_DELAY: 1400
 };
 
+export const PERSONA_TRANSITION_CONFIG = {
+  DURATION: 600
+};
+
 export const PERSONA_CONFIG = {
   dat: {
     key: "dat",

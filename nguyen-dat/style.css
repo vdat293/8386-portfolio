@@ -15,6 +15,7 @@
   --typing-color-1: #22d3ee;
   --typing-color-2: #6366f1;
   --typing-color-3: #ec4899;
+  --persona-transition-duration: 600ms;
 }
 
 /* Animation helpers */
@@ -666,6 +667,24 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
+  transition: background-color var(--persona-transition-duration) ease,
+    color var(--persona-transition-duration) ease;
+}
+
+body.persona-transitioning main {
+  animation: personaContentReveal var(--persona-transition-duration) cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+@keyframes personaContentReveal {
+  from {
+    opacity: 0;
+    filter: blur(18px) saturate(115%);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0) saturate(100%);
+  }
 }
 
 img {
@@ -709,6 +728,10 @@ textarea:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  body.persona-transitioning main {
+    animation: none;
   }
 }
 

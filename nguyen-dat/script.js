@@ -1,6 +1,7 @@
 import {
   TYPING_CONFIG,
   HERO_FLIP_CONFIG,
+  PERSONA_TRANSITION_CONFIG,
   PERSONA_CONFIG,
   SKILLS_MODE,
   CAROUSEL_CONFIG,
@@ -22,7 +23,8 @@ const state = {
   promptObserver: null,
   promptScrollFallback: null,
   updateTypeTexts: null,
-  setActiveProfile: null
+  setActiveProfile: null,
+  personaAnimationTimeoutId: null
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -474,6 +476,27 @@ function setupHeroFlipMotionListener(elements) {
   addMediaQueryListener(prefersReducedMotionQuery, handler);
 }
 
+function triggerPersonaTransition() {
+  if (prefersReducedMotionQuery.matches) return;
+
+  const root = document.body;
+  if (!root) return;
+
+  if (state.personaAnimationTimeoutId) {
+    window.clearTimeout(state.personaAnimationTimeoutId);
+    state.personaAnimationTimeoutId = null;
+  }
+
+  root.classList.remove("persona-transitioning");
+  void root.offsetWidth;
+  root.classList.add("persona-transitioning");
+
+  state.personaAnimationTimeoutId = window.setTimeout(() => {
+    root.classList.remove("persona-transitioning");
+    state.personaAnimationTimeoutId = null;
+  }, PERSONA_TRANSITION_CONFIG.DURATION);
+}
+
 function applyPersona(nextPersona, { scrollToTop = true, force = false, elements = cacheDomElements() } = {}) {
   const persona = PERSONA_CONFIG[nextPersona];
   if (!persona) return;
@@ -498,6 +521,10 @@ function applyPersona(nextPersona, { scrollToTop = true, force = false, elements
   updatePromptCopy(persona);
   syncPersonaToggle(elements);
   setSkillsMode(persona.key === "nor" ? SKILLS_MODE.ACHIEVEMENTS : SKILLS_MODE.SKILLS, elements);
+
+  if (!force) {
+    triggerPersonaTransition();
+  }
 
   if (scrollToTop) {
     requestAnimationFrame(() => {
